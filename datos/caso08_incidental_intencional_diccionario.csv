@@ -1,0 +1,6 @@
+"Variable","Qué representa","Codificación","Nivel en JASP"
+"id","Identificador","1 a 48","Nominal"
+"aprendizaje","Nivel de la VI","incidental · intencional","Nominal"
+"recuerdo","VD: palabras recordadas","0 a 20","Escala"
+"sexo","Sexo","Mujer · Hombre","Nominal"
+"edad","Edad","años","Escala"

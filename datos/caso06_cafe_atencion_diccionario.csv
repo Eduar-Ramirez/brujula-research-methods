@@ -1,0 +1,7 @@
+"Variable","Qué representa","Codificación","Nivel en JASP"
+"id","Identificador","1 a 24","Nominal"
+"orden","Secuencia recibida (reequilibrado)","cafe_primero · descafeinado_primero","Nominal"
+"sexo","Sexo","Mujer · Hombre","Nominal"
+"edad","Edad","años","Escala"
+"aciertos_cafe","VD en la sesión con café","0 a 40","Escala"
+"aciertos_descafeinado","VD en la sesión con descafeinado","0 a 40","Escala"

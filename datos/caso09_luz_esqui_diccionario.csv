@@ -1,0 +1,5 @@
+"Variable","Qué representa","Codificación","Nivel en JASP"
+"id","Identificador","1 a 40","Nominal"
+"luz","VI 1: exposición extra a la luz","sin_luz · con_luz","Nominal"
+"esqui","VI 2: esquí de fondo","sin_esqui · con_esqui","Nominal"
+"mejoria","VD: reducción de síntomas en el inventario de Beck","puntos (puede ser negativa si empeora)","Escala"

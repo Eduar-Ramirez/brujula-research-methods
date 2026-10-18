@@ -1,0 +1,6 @@
+"Variable","Qué representa","Codificación","Nivel en JASP"
+"id","Identificador","1 a 30","Nominal"
+"bloque","Bloque formado por la nota previa","alto (9-10) · medio (7-8) · bajo (5-6)","Nominal"
+"rend_previo","Nota previa en matemáticas (variable bloqueada)","0 a 10","Escala"
+"condicion","Nivel de la VI","matematik · control","Nominal"
+"rend_actual","VD: nota en el examen final","0 a 10, un decimal","Escala"

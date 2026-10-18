@@ -1,0 +1,6 @@
+"Variable","Qué representa","Codificación","Nivel en JASP"
+"id","Identificador","1 a 26","Nominal"
+"orden","Condición de la primera lectura","guardado_primero · mesa_primero","Nominal"
+"texto_A_con","Condición en la que se leyó el texto A","guardado · sobre_mesa","Nominal"
+"comp_guardado","VD con el móvil guardado","0 a 20","Escala"
+"comp_sobre_mesa","VD con el móvil sobre la mesa","0 a 20","Escala"

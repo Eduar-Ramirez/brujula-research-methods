@@ -1,0 +1,6 @@
+"Variable","Qué representa","Codificación","Nivel en JASP"
+"id","Identificador","1 a 60","Nominal"
+"grupo","Nivel de la VI","sin_pastilla · placebo · cafeina","Nominal"
+"detecciones","VD: letras objetivo detectadas","0 a 40","Escala"
+"sexo","Sexo","Mujer · Hombre","Nominal"
+"edad","Edad","años","Escala"

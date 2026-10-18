@@ -1,0 +1,5 @@
+"Variable","Qué representa","Codificación","Nivel en JASP"
+"id","Identificador","1 a 48","Nominal"
+"persona","VI 1: persona gramatical","self · other","Nominal"
+"elaboracion","VI 2: elaboración relacional","con · sin","Nominal"
+"mejora","VD: postest − pretest","puntos porcentuales","Escala"

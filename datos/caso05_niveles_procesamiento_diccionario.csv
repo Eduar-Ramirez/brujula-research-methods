@@ -1,0 +1,8 @@
+"Variable","Qué representa","Codificación","Nivel en JASP"
+"id","Código anónimo","P01 a P30","Nominal"
+"sexo","Sexo","Mujer · Hombre","Nominal"
+"edad","Edad","años","Escala"
+"Procesamiento Superficial","VD en el nivel gráfico","proporción 0-1 (aciertos/6)","Escala"
+"Procesamiento Intermedio","VD en el nivel fonético","proporción 0-1","Escala"
+"Procesamiento Profundo","VD en el nivel semántico","proporción 0-1","Escala"
+"falsas_alarmas","Palabras nuevas marcadas por error (de 18)","0 a 18","Escala"

@@ -1,0 +1,63 @@
+[
+  {
+    "name": "Inventario íntegro: 9 unidades, 15 casos y 4 simuladores",
+    "ok": true
+  },
+  {
+    "name": "Datos, CSV y gráficos originales sin modificaciones",
+    "ok": true
+  },
+  {
+    "name": "89 rutas se renderizan con enlaces y recursos locales válidos",
+    "ok": true
+  },
+  {
+    "name": "Teoría separada de tests y lectura persistente",
+    "ok": true
+  },
+  {
+    "name": "Hojas recorridas",
+    "count": 13,
+    "ok": true
+  },
+  {
+    "name": "Todas las hojas del árbol de decisión accesibles",
+    "ok": true
+  },
+  {
+    "name": "Micropráctica del diálogo con feedback",
+    "ok": true
+  },
+  {
+    "name": "Test de práctica: corrección y reacción de Eduar",
+    "ok": true
+  },
+  {
+    "name": "Caso piloto: error, acierto y siguiente paso",
+    "ok": true
+  },
+  {
+    "name": "Casos: todos los tipos de paso y descargas",
+    "ok": true
+  },
+  {
+    "name": "Doble umbral: ni finalización ni soluciones reveladas desbloquean",
+    "ok": true
+  },
+  {
+    "name": "Solo 60% general no basta sin 60% JASP; ambos desbloquean y persisten",
+    "ok": true
+  },
+  {
+    "name": "Simulacro desbloqueado: inicio, respuesta y entrega",
+    "ok": true
+  },
+  {
+    "name": "Animaciones desactivables y controles de mentor",
+    "ok": true
+  },
+  {
+    "name": "Progreso v1 reutilizado tras recarga",
+    "ok": true
+  }
+]

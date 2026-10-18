@@ -1,0 +1,6 @@
+"Variable","Qué representa","Codificación","Nivel en JASP"
+"id","Identificador anónimo de la persona","1 a 64","Nominal"
+"version","Nivel de la VI que recibió","no_violenta · violenta","Nominal"
+"aciertos","VD: respuestas correctas en el cuestionario","0 a 20","Escala"
+"edad","Edad en años","18 a 30","Escala"
+"sexo","Sexo declarado","mujer · hombre","Nominal"

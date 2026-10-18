@@ -1,0 +1,6 @@
+"Variable","Qué representa","Codificación","Nivel en JASP"
+"id","Identificador","1 a 30","Nominal"
+"secuencia","Secuencia del cuadrado latino (A = 0, B = 0,4, C = 0,8 g/l)","B-C-A · C-A-B · A-B-C","Nominal"
+"errores_0gl","VD con 0 g/l","n.º de errores","Escala"
+"errores_04gl","VD con 0,4 g/l","n.º de errores","Escala"
+"errores_08gl","VD con 0,8 g/l","n.º de errores","Escala"

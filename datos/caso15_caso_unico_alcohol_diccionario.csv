@@ -1,0 +1,6 @@
+"Variable","Qué representa","Codificación","Nivel en JASP"
+"dia","Día del registro","1 a 28","Escala"
+"semana","Semana del estudio","1 a 4","Ordinal"
+"fase","Fase del diseño","A1 · B1 · A2 · B2","Nominal"
+"condicion","Presencia del tratamiento","sin_tratamiento · con_tratamiento","Nominal"
+"unidades","VD: unidades de alcohol registradas ese día","unidades (0 o más)","Escala"

@@ -1,0 +1,4 @@
+"Variable","Qué representa","Codificación","Nivel en JASP"
+"id","Identificador","1 a 50","Nominal"
+"movil","Nivel de la VI","guardado · sobre_mesa","Nominal"
+"comprension","VD: aciertos","0 a 20","Escala"
