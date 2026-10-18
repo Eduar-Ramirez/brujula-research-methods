@@ -1,55 +1,113 @@
-# Brújula · Versión reorganizada
+# Brújula · Aprende a investigar
 
-Herramienta de estudio autónomo de Eduar Ramírez Riveros. Esta entrega desarrolla las cinco fases aprobadas a partir del ZIP original e integra los cinco GIF del profesor.
+**Una herramienta interactiva para comprender los diseños de investigación y su relación con el análisis de datos y la estadística inferencial.**
 
-## Abrir y probar
+Brújula acompaña el estudio autónomo de Métodos y Técnicas de Investigación a través de teoría, práctica y casos guiados. Permite recorrer el proceso de una investigación: formular una pregunta, elegir un diseño, analizar datos, interpretar los resultados y comunicar las conclusiones.
 
-Abre `index.html` en un navegador de escritorio. Todos los recursos de la aplicación son locales; no requiere instalación, compilación ni servicios de IA.
+Está dirigida a estudiantes universitarios, especialmente de Psicología y otras disciplinas que utilizan métodos de investigación cuantitativos y cualitativos.
 
-Para probarla con una dirección web local:
+## Tres espacios para aprender
+
+### 1. Explora la materia
+
+Ofrece una visión general de la asignatura y permite consultar la teoría **por semanas o por unidades**. Cada tema comienza con una pregunta central y un esquema de conceptos, seguido de secciones desplegables para profundizar al ritmo de cada estudiante.
+
+Incluye un mapa y un comparador de diseños. La teoría permanece accesible en todo momento, sin requisitos de desbloqueo.
+
+![Vista de teoría organizada por unidades](docs/images/explora.jpg)
+
+### 2. Desafíos
+
+Un espacio de entrenamiento breve para recordar, relacionar y aplicar conceptos:
+
+- **Tarjetas de memoria:** intentar recordar antes de consultar la respuesta.
+- **Preguntas rápidas:** practicar con explicaciones de las respuestas.
+- **Ejercicios de emparejar:** conectar situaciones con conceptos.
+- **Simuladores:** explorar cómo cambian los resultados al modificar las condiciones.
+- **Decide como un investigador:** recorrer un árbol de decisiones para orientar la elección de un diseño según la pregunta y las posibilidades del estudio.
+
+### 3. Libera el conocimiento
+
+El núcleo práctico de Brújula: **misiones que recorren investigaciones completas**, desde la pregunta inicial hasta el reporte de resultados.
+
+Los casos cuantitativos que requieren trabajar con datos incluyen bases descargables, diccionarios de variables e instrucciones para analizarlas con [JASP](https://jasp-stats.org/download/). Las actividades cualitativas permiten practicar la codificación, la categorización y la interpretación.
+
+Los datos utilizados son **simulados con fines educativos**.
+
+![Ruta de misiones y condiciones para desbloquear el simulacro](docs/images/misiones.jpg)
+
+## Aprender haciendo
+
+La herramienta permite practicar decisiones sobre:
+
+- El método científico y las tradiciones cuantitativa y cualitativa.
+- Los experimentos con grupos distintos y con medidas repetidas.
+- Los diseños factoriales y la interpretación de interacciones.
+- Los diseños de caso único.
+- La elección e interpretación de análisis adecuados al diseño.
+- La comunicación de resultados y los límites de las conclusiones.
+
+La versión actual reúne **9 unidades, 33 secciones teóricas, 70 tarjetas, 50 preguntas de práctica, 15 casos guiados y 4 simuladores**. Algunas unidades están identificadas como «En preparación» y ciertas semanas todavía no tienen una ficha teórica asociada.
+
+## Simulacro desbloqueable
+
+La ruta al primer parcial contiene siete misiones. Para acceder al simulacro se deben alcanzar **las dos metas**:
+
+1. Resolver correctamente al menos el **60 % de los problemas de la ruta**.
+2. Resolver correctamente al menos el **60 % de las lecturas de resultados de JASP**.
+
+Consultar una respuesta razonada ayuda a aprender, pero ese paso no suma para el desbloqueo. Terminar el recorrido de una misión no equivale necesariamente a resolver correctamente todos sus problemas.
+
+El simulacro presenta veinte preguntas y ofrece un diagnóstico para orientar el repaso. Se plantea como preparación para el examen; no garantiza que sus preguntas aparezcan literalmente en él.
+
+## Acompañamiento y autonomía
+
+Un **avatar animado de profesor** presenta orientaciones y reacciona a los avances mediante diálogos guionizados. Sus estados incluyen explicación, espera, celebración, sorpresa y reflexión ante un error.
+
+- Modo **con guía** o **con autonomía** dentro de las misiones.
+- Animaciones desactivables y respeto a la preferencia de movimiento reducido.
+- Panel del profesor que puede contraerse.
+- Diseño adaptable a escritorio y móvil.
+- Biblioteca con glosario, amenazas a la validez y fichas de análisis.
+
+## Mi cuaderno de investigación
+
+El cuaderno reúne lecturas, actividades, misiones, insignias y resultados de simulacros. Permite descargar un informe y exportar una copia del progreso para restaurarla posteriormente.
+
+Los avances se guardan **en el navegador y la dirección web utilizados**. Para cambiar de dispositivo, navegador o dirección, conviene exportar primero una copia desde el cuaderno.
+
+## Probar la herramienta
+
+Brújula está desarrollada con **HTML, CSS y JavaScript**, sin compilación ni servidor de aplicación. No requiere cuenta de usuario ni servicios de IA para funcionar.
+
+Descarga el repositorio y abre `index.html` en un navegador. También puedes utilizar un servidor local desde la carpeta del proyecto:
 
 ```sh
 python3 -m http.server 8765 --bind 127.0.0.1
 ```
 
-Abre `http://127.0.0.1:8765`. Ejecuta el comando desde esta carpeta.
+Después abre [http://127.0.0.1:8765](http://127.0.0.1:8765).
 
-## Tres espacios
+Los recursos de la herramienta están incluidos en el repositorio. El análisis de las bases de datos se realiza por separado en JASP.
 
-1. **Explora la materia**: teoría por semanas o unidades, esquemas iniciales, lecturas desplegables, mapa y comparador.
-2. **Desafíos**: tarjetas, preguntas rápidas, emparejar, cuatro simuladores y diálogo «Decide como un investigador».
-3. **Libera el conocimiento**: siete misiones de la ruta al parcial, catálogo completo de quince casos, descargas y simulacro.
+## Adaptación docente
 
-**Mi cuaderno** conserva el progreso, las insignias, diagnósticos, informes y fechas de entrega. **Biblioteca de consulta** conserva el glosario, las amenazas y las fichas de análisis.
+El archivo [`datos/configuracion.js`](datos/configuracion.js) permite ajustar las unidades visibles, el cronograma, la fecha del parcial, los casos de la ruta y los umbrales de desbloqueo.
 
-## Eduar
+```text
+index.html              Entrada de la aplicación
+css/                    Estilos y diseño adaptable
+js/                     Navegación, actividades y seguimiento
+datos/                 Contenidos, configuración y bases de datos
+graficos/              Gráficos de referencia
+img/                   Imágenes y animaciones
+docs/images/           Capturas utilizadas en este README
+```
 
-Sus intervenciones son guionizadas, basadas en los contenidos y acciones. No hay conversación libre con un modelo de IA. Los GIF se reproducen una vez por intervención y vuelven a una imagen fija. Se pueden desactivar y el sistema respeta la preferencia de movimiento reducido. El panel se puede contraer, también en móvil. Los GIF actuales conservan fondo blanco.
+El seguimiento y el desbloqueo se ejecutan en el navegador. Están pensados como apoyo al aprendizaje, no como un sistema seguro de evaluación o custodia de preguntas de examen.
 
-## Progreso y migración
+## Licencias
 
-Se mantiene la clave `brujula_mdi_v1` y los identificadores originales de unidades, casos, pasos y preguntas. Si se sustituye la versión en la misma dirección/origen y navegador, continúa el progreso existente. Otra dirección, puerto, navegador o dispositivo tiene almacenamiento diferente.
-
-En **Mi cuaderno** puedes descargar una copia JSON y restaurarla en la nueva dirección. La restauración pide confirmación antes de sustituir los avances del navegador. La copia HTML de informe original sigue disponible, pero no sirve para restaurar el estado.
-
-## Configuración docente
-
-Sigue en `datos/configuracion.js`: unidades visibles, cronograma, fecha, ruta y umbrales. Los contenidos y las bases de datos originales no se han reescrito.
-
-- Presentación y nuevas vistas: `js/experiencia.js`.
-- Estilos nuevos: `css/experiencia.css`.
-- Recursos del avatar: `img/eduar/`.
-- Motores originales: `js/casos.js`, `js/repaso.js`, `js/simuladores.js`, `js/parcial.js`.
-- Archivo de referencia original: `README-version-original.md`.
-
-El desbloqueo exige **60 % de problemas y 60 % de lecturas de JASP** de la ruta. En esta configuración: al menos 45 de 74 problemas y 4 de 6 lecturas. Las soluciones reveladas no suman. Terminar un recorrido no implica haberlo resuelto; ambos estados se muestran por separado. Un desbloqueo obtenido se conserva, como en la versión original.
-
-## Publicación
-
-La entrega no se ha publicado. Para GitHub Pages, sube el contenido de esta carpeta con `index.html` en la raíz del sitio; se incluye `.nojekyll`. Mantén la misma dirección si quieres conservar automáticamente el progreso local.
-
-## Límites del material original
-
-Cuasiexperimentales, ex post facto y observación/encuesta siguen en preparación. Las semanas 11–15 no tienen fichas teóricas asociadas y se muestran como pendientes. El simulacro es material de preparación: no se presenta como una promesa de preguntas exactas del examen. El bloqueo y el banco permanecen en el navegador; no son un control seguro de examen.
-
-Consulta `INFORME-5-FASES.md` para el inventario y las comprobaciones. Se mantienen las licencias y atribuciones del original.
+- **Código:** [licencia MIT](LICENSE).
+- **Contenidos educativos:** condiciones recogidas en [LICENCIA-CONTENIDOS.md](LICENCIA-CONTENIDOS.md).
+- Los logotipos institucionales quedan excluidos de estas licencias.
