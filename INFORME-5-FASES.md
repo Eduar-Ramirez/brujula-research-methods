@@ -2,6 +2,8 @@
 
 Entrega: 18 de octubre de 2026. Proyecto original conservado; cambios realizados en una copia independiente.
 
+> **Nota del 20/10/2026.** Las cifras de este informe corresponden a la entrega del 18/10. Desde entonces el tema 6 tiene 17 tarjetas, 15 preguntas y 3 ejercicios de emparejar solo de factoriales; el tema 7 tiene su propio ejercicio de emparejar; y hay un quinto simulador, el Laboratorio del café. Las cifras actuales están en el [README](README.md#qué-contiene) y los cambios, en [`docs/CAMBIOS.md`](docs/CAMBIOS.md).
+
 ## 1. Inventario y organización
 
 Se conservan nueve unidades, 33 secciones teóricas, 70 tarjetas, 50 preguntas de práctica, quince casos con 160 pasos y cuatro simuladores. También se conservan los ejercicios de emparejar, glosario, ayudas, banco de simulacro, trece bases CSV con sus diccionarios y trece gráficos SVG.
