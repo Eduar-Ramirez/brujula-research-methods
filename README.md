@@ -1,113 +1,192 @@
-# Brújula · Aprende a investigar
+# Brújula · Aprender a investigar
 
-**Una herramienta interactiva para comprender los diseños de investigación y su relación con el análisis de datos y la estadística inferencial.**
+Laboratorio de estudio autónomo de **Métodos, Diseño y Técnicas de Investigación en Psicología** (Grado en Psicología, ESIC University). El estudiante lee la teoría, practica con desafíos y simuladores y resuelve casos con datos para JASP, acompañado por Eduar, su profesor.
 
-Brújula acompaña el estudio autónomo de Métodos y Técnicas de Investigación a través de teoría, práctica y casos guiados. Permite recorrer el proceso de una investigación: formular una pregunta, elegir un diseño, analizar datos, interpretar los resultados y comunicar las conclusiones.
+Es una web estática: HTML, CSS y JavaScript, sin servidor, sin librerías externas y sin servicios de IA. Funciona en ordenador y en móvil.
 
-Está dirigida a estudiantes universitarios, especialmente de Psicología y otras disciplinas que utilizan métodos de investigación cuantitativos y cualitativos.
+![Portada de Brújula: tres espacios de aprendizaje y Eduar a la derecha](docs/capturas/01-portada.png)
 
-## Tres espacios para aprender
+## Índice
 
-### 1. Explora la materia
+- [Tres espacios de aprendizaje](#tres-espacios-de-aprendizaje)
+- [Qué contiene](#qué-contiene)
+- [Eduar](#eduar)
+- [Progreso del estudiante](#progreso-del-estudiante)
+- [Configuración para el profesor](#configuración-para-el-profesor)
+- [Probar en local](#probar-en-local)
+- [Publicar en GitHub Pages](#publicar-en-github-pages)
+- [Estructura de carpetas](#estructura-de-carpetas)
+- [Límites conocidos](#límites-conocidos)
+- [Historial de cambios](#historial-de-cambios)
+- [Licencias y créditos](#licencias-y-créditos)
 
-Ofrece una visión general de la asignatura y permite consultar la teoría **por semanas o por unidades**. Cada tema comienza con una pregunta central y un esquema de conceptos, seguido de secciones desplegables para profundizar al ritmo de cada estudiante.
+## Tres espacios de aprendizaje
 
-Incluye un mapa y un comparador de diseños. La teoría permanece accesible en todo momento, sin requisitos de desbloqueo.
+| Espacio | Para qué sirve |
+|---|---|
+| **01 · Explora la materia** | Teoría por semanas o por unidades. Cada tema abre con una pregunta central y tres conceptos de orientación; después, las secciones completas. Incluye el mapa de diseños y el comparador. |
+| **02 · Desafíos** | Tarjetas de memoria, preguntas rápidas, ejercicios de emparejar, simuladores «¿qué pasaría si…?» y el diálogo «Decide como un investigador». Se filtran por tema. |
+| **03 · Libera el conocimiento** | La ruta al parcial (siete misiones), el catálogo de quince casos con datos, las descargas y el simulacro. |
 
-![Vista de teoría organizada por unidades](docs/images/explora.jpg)
+Además, **Mi cuaderno** guarda el progreso, las insignias y los informes, y la **Biblioteca de consulta** reúne el glosario, las amenazas a la validez y las fichas de análisis.
 
-### 2. Desafíos
+### Explora la materia
 
-Un espacio de entrenamiento breve para recordar, relacionar y aplicar conceptos:
+![Explora la materia: teoría ordenada por semanas del cronograma](docs/capturas/02-explora.png)
 
-- **Tarjetas de memoria:** intentar recordar antes de consultar la respuesta.
-- **Preguntas rápidas:** practicar con explicaciones de las respuestas.
-- **Ejercicios de emparejar:** conectar situaciones con conceptos.
-- **Simuladores:** explorar cómo cambian los resultados al modificar las condiciones.
-- **Decide como un investigador:** recorrer un árbol de decisiones para orientar la elección de un diseño según la pregunta y las posibilidades del estudio.
+Cada unidad tiene una pregunta central y sus secciones. Ejemplo, el tema 6:
 
-### 3. Libera el conocimiento
+![Unidad de diseños factoriales con su pregunta central](docs/capturas/03-teoria-t6.png)
 
-El núcleo práctico de Brújula: **misiones que recorren investigaciones completas**, desde la pregunta inicial hasta el reporte de resultados.
+### Desafíos
 
-Los casos cuantitativos que requieren trabajar con datos incluyen bases descargables, diccionarios de variables e instrucciones para analizarlas con [JASP](https://jasp-stats.org/download/). Las actividades cualitativas permiten practicar la codificación, la categorización y la interpretación.
+![Desafíos del tema 6: tarjetas, preguntas rápidas, emparejar y simuladores](docs/capturas/04-desafios-t6.png)
 
-Los datos utilizados son **simulados con fines educativos**.
+Preguntas rápidas con explicación después de cada respuesta:
 
-![Ruta de misiones y condiciones para desbloquear el simulacro](docs/images/misiones.jpg)
+![Pregunta rápida sobre un diseño factorial mixto](docs/capturas/06-test-t6.png)
 
-## Aprender haciendo
+Simuladores. El más reciente, el **Laboratorio del café**, enseña por qué la interacción es simétrica e independiente de los efectos principales:
 
-La herramienta permite practicar decisiones sobre:
+![Laboratorio del café: casillas, escenarios y los dos gráficos de interacción](docs/capturas/05-laboratorio-cafe.png)
 
-- El método científico y las tradiciones cuantitativa y cualitativa.
-- Los experimentos con grupos distintos y con medidas repetidas.
-- Los diseños factoriales y la interpretación de interacciones.
-- Los diseños de caso único.
-- La elección e interpretación de análisis adecuados al diseño.
-- La comunicación de resultados y los límites de las conclusiones.
+### Libera el conocimiento
 
-La versión actual reúne **9 unidades, 33 secciones teóricas, 70 tarjetas, 50 preguntas de práctica, 15 casos guiados y 4 simuladores**. Algunas unidades están identificadas como «En preparación» y ciertas semanas todavía no tienen una ficha teórica asociada.
+![Ruta al parcial 1 con el progreso de problemas y lecturas de JASP](docs/capturas/07-libera.png)
 
-## Simulacro desbloqueable
+Cada misión es un caso guiado, de la pregunta a la comunicación de resultados:
 
-La ruta al primer parcial contiene siete misiones. Para acceder al simulacro se deben alcanzar **las dos metas**:
+![Misión 9, luz y esquí: elegir y justificar el diseño](docs/capturas/08-caso-c09.png)
 
-1. Resolver correctamente al menos el **60 % de los problemas de la ruta**.
-2. Resolver correctamente al menos el **60 % de las lecturas de resultados de JASP**.
+Al leer bien la salida de JASP se desbloquea la salida de referencia, con su gráfico:
 
-Consultar una respuesta razonada ayuda a aprender, pero ese paso no suma para el desbloqueo. Terminar el recorrido de una misión no equivale necesariamente a resolver correctamente todos sus problemas.
+![Gráfico de referencia del caso 9: interacción luz × esquí](graficos/c09_principal.svg)
 
-El simulacro presenta veinte preguntas y ofrece un diagnóstico para orientar el repaso. Se plantea como preparación para el examen; no garantiza que sus preguntas aparezcan literalmente en él.
+### Mi cuaderno y biblioteca
 
-## Acompañamiento y autonomía
+| Mi cuaderno de investigación | Biblioteca de consulta |
+|---|---|
+| ![Mi cuaderno: contadores de progreso e insignias](docs/capturas/09-cuaderno.png) | ![Biblioteca: glosario, amenazas a la validez y fichas de análisis](docs/capturas/10-biblioteca.png) |
 
-Un **avatar animado de profesor** presenta orientaciones y reacciona a los avances mediante diálogos guionizados. Sus estados incluyen explicación, espera, celebración, sorpresa y reflexión ante un error.
+### En el móvil
 
-- Modo **con guía** o **con autonomía** dentro de las misiones.
-- Animaciones desactivables y respeto a la preferencia de movimiento reducido.
-- Panel del profesor que puede contraerse.
-- Diseño adaptable a escritorio y móvil.
-- Biblioteca con glosario, amenazas a la validez y fichas de análisis.
+| Portada | Laboratorio del café |
+|---|---|
+| <img src="docs/capturas/11-movil-portada.png" alt="Portada en el móvil" width="260"> | <img src="docs/capturas/12-movil-laboratorio.png" alt="Laboratorio del café en el móvil" width="260"> |
 
-## Mi cuaderno de investigación
+## Qué contiene
 
-El cuaderno reúne lecturas, actividades, misiones, insignias y resultados de simulacros. Permite descargar un informe y exportar una copia del progreso para restaurarla posteriormente.
+Datos de esta versión (20/10/2026):
 
-Los avances se guardan **en el navegador y la dirección web utilizados**. Para cambiar de dispositivo, navegador o dirección, conviene exportar primero una copia desde el cuaderno.
+| Unidad | Semana o tema | Estado | Secciones | Tarjetas | Preguntas | Emparejar | Simuladores | Casos |
+|---|---|---|---:|---:|---:|---:|---|---|
+| Método científico y tradiciones | Semanas 1-2 | activa | 6 | 15 | 8 | 1 | — | c13 |
+| Investigación cualitativa | Semana 3 | activa | 13 | 23 | 14 | — | — | c14 |
+| Experimentos con grupos distintos | Tema 4 | activa | 3 | 10 | 4 | 1 | Dos grupos | c01-c04, c12 |
+| Experimentos con el mismo grupo | Tema 5 | activa | 3 | 8 | 9 | 1 | Mismo grupo | c05-c08, c12 |
+| Diseños factoriales | Tema 6 | activa | 2 | 17 | 15 | 3 | Factorial 2 × 2 · Laboratorio del café | c09-c11 |
+| Diseños de caso único | Tema 7 | activa | 2 | 5 | 5 | 1 | Caso único ABAB | c15 |
+| Diseños cuasiexperimentales | Semana 8 | en preparación | 1 | 1 | 3 | — | — | — |
+| Diseños ex post facto | Semana 9 | en preparación | 1 | 2 | 2 | — | — | — |
+| Observación y encuesta | Semanas 9-10 | en preparación | 2 | 1 | 1 | — | — | — |
+| **Total** | | | **33** | **82** | **61** | **7** | **5** | **15** |
 
-## Probar la herramienta
+**Casos.** Quince casos con 160 pasos. Doce tienen datos simulados para JASP (trece bases CSV, cada una con su diccionario de variables, y un gráfico de referencia); c04, c13 y c14 se resuelven sin datos. La ruta del parcial 1 son siete: c13, c14, c01, c05, c09, c10 y c15.
 
-Brújula está desarrollada con **HTML, CSS y JavaScript**, sin compilación ni servidor de aplicación. No requiere cuenta de usuario ni servicios de IA para funcionar.
+**Simulacro.** 20 ítems (5 fáciles, 10 medios y 5 difíciles) sorteados de un banco de 93 sobre las semanas 1-7. Se abre al resolver, sin ver la respuesta, el 60 % de los problemas de la ruta y el 60 % de las lecturas de JASP.
 
-Descarga el repositorio y abre `index.html` en un navegador. También puedes utilizar un servidor local desde la carpeta del proyecto:
+**Lectura de JASP.** En cada análisis se pide un solo dato clave (la p, la F o la ε), explicado antes en lenguaje sencillo, y después una pregunta sobre lo que significa. La tolerancia acepta los redondeos de JASP y el formato «< .001»; si el valor no coincide, el desplegable «¿No te coincide?» recoge las causas habituales.
+
+## Eduar
+
+Eduar acompaña desde un panel lateral, que se puede contraer, con cinco gestos: hablando, esperando, celebrando, sorpresa y reflexivo (`img/eduar/`). Sus intervenciones están escritas de antemano y responden a lo que hace el estudiante: no hay conversación libre con un modelo de IA. Las animaciones se pueden desactivar, y se desactivan solas si el sistema pide movimiento reducido.
+
+## Progreso del estudiante
+
+- El progreso se guarda en el navegador (`localStorage`, clave `brujula_mdi_v1`). Si se publica una versión nueva **en la misma dirección**, cada estudiante conserva su progreso.
+- Otra dirección, otro navegador u otro dispositivo empiezan de cero. Para trasladarlo, en **Mi cuaderno** se descarga una copia JSON y se restaura en el nuevo sitio.
+- El informe HTML descargable sirve para entregar, no para restaurar.
+
+## Configuración para el profesor
+
+Casi todo se cambia en **`datos/configuracion.js`**:
+
+| Clave | Qué controla |
+|---|---|
+| `estados` | Unidades activas, en preparación u ocultas, por ejemplo `estados: { cuasi: "activa" }`. |
+| `mostrarEnPreparacion` | Si las unidades en preparación aparecen en los menús. |
+| `inicioCurso` y `cronograma` | Semanas, títulos y unidad y caso de cada semana. La portada resalta la semana actual. |
+| `parcial` | Fecha del examen, casos de la ruta, umbrales (`umbral`, `umbralJasp`), reparto de dificultad e ítems por semana. |
+
+Otras tareas:
+
+- **Añadir una unidad.** Copia un archivo de `datos/unidades/`, cambia `id`, `orden`, `bloque`, `tema` y `titulo`, añade su `<script>` en `index.html` y enlázala en el `cronograma`.
+- **Tarjetas, preguntas y emparejar.** Están en cada `datos/unidades/*.js` (`flash`, `test`, `emparejar`). El progreso de tarjetas y emparejar se guarda por posición: añade elementos al final en lugar de reordenar los existentes.
+- **Simuladores.** En `js/simuladores.js`. Cada uno declara a qué unidad pertenece y aparece solo en sus Desafíos.
+- **Casos y banco de ítems.** `datos/contenido.js` y `datos/items_parcial1.js` se **generan** fuera de esta carpeta (app de R y scripts del banco); no se editan a mano.
+
+## Probar en local
+
+Abre `index.html` en el navegador, o sirve la carpeta para probarla como en la web:
 
 ```sh
 python3 -m http.server 8765 --bind 127.0.0.1
 ```
 
-Después abre [http://127.0.0.1:8765](http://127.0.0.1:8765).
+Después abre `http://127.0.0.1:8765`.
 
-Los recursos de la herramienta están incluidos en el repositorio. El análisis de las bases de datos se realiza por separado en JASP.
+## Publicar en GitHub Pages
 
-## Adaptación docente
+1. Sube **todo el contenido de esta carpeta**, con `index.html` en la raíz del repositorio. El archivo `.nojekyll` ya está incluido.
+2. Sube también las carpetas `img/`, `graficos/` y `docs/capturas/`. Si faltan, la web no muestra a Eduar ni los gráficos de los casos, y este README no muestra sus imágenes.
+3. Respeta mayúsculas y minúsculas en los nombres: GitHub las distingue (`img/eduar/eduar-reposo.png` no es lo mismo que `img/Eduar/...`).
+4. En **Settings › Pages**, elige la rama `main` y la carpeta `/ (root)`.
+5. Para conservar el progreso de los estudiantes, publica siempre en la misma dirección.
 
-El archivo [`datos/configuracion.js`](datos/configuracion.js) permite ajustar las unidades visibles, el cronograma, la fecha del parcial, los casos de la ruta y los umbrales de desbloqueo.
+Si una imagen no se ve en GitHub, abre el archivo desde la lista del repositorio: si no aparece ahí, no se subió.
 
-```text
-index.html              Entrada de la aplicación
-css/                    Estilos y diseño adaptable
-js/                     Navegación, actividades y seguimiento
-datos/                 Contenidos, configuración y bases de datos
-graficos/              Gráficos de referencia
-img/                   Imágenes y animaciones
-docs/images/           Capturas utilizadas en este README
+## Estructura de carpetas
+
+```
+index.html                   página única
+css/brujula.css              estilos base (identidad ESIC)
+css/experiencia.css          estilos de la versión actual (espacios, Eduar, laboratorio del café)
+js/nucleo.js                 registro de contenidos, estado, rutas y utilidades
+js/experiencia.js            portada, tres espacios, Eduar y navegación
+js/vistas.js                 vistas de unidades, mapa y comparador, biblioteca y cuaderno
+js/simuladores.js            los cinco simuladores (SVG propio)
+js/casos.js                  motor de los casos
+js/repaso.js                 tarjetas, preguntas rápidas y emparejar
+js/parcial.js                ruta al parcial, simulacro, insignias y créditos
+datos/configuracion.js       configuración del profesor
+datos/mapa.js                mapa de diseños, árbol de decisión y amenazas
+datos/unidades/*.js          una unidad por archivo
+datos/contenido.js           casos (generado)
+datos/items_parcial1.js      banco de ítems codificado (generado)
+datos/*.csv                  datos simulados y diccionarios
+graficos/*.svg               gráficos de referencia de los casos
+img/                         logos de ESIC y gestos de Eduar
+docs/capturas/               imágenes de este README
+docs/CAMBIOS.md              historial de cambios
+docs/historial/              documentación de versiones anteriores
 ```
 
-El seguimiento y el desbloqueo se ejecutan en el navegador. Están pensados como apoyo al aprendizaje, no como un sistema seguro de evaluación o custodia de preguntas de examen.
+## Límites conocidos
 
-## Licencias
+- El requisito del 60 % y el progreso se calculan en el navegador. Quien sepa manipularlo puede saltárselo: es una barrera pedagógica, no un control de examen. Para evaluar con garantías, usa Canvas.
+- El banco de ítems está codificado para que las respuestas no se lean a simple vista en GitHub, pero no está cifrado. La versión legible del banco no debe subirse al repositorio.
+- Las unidades cuasiexperimentales, ex post facto y observación y encuesta están en preparación. Las semanas 11-15 aún no tienen teoría asociada.
+- El simulacro es material de preparación, no una muestra de las preguntas del examen.
+- Los dos simuladores factoriales trabajan con medias, sin error muestral: muestran el patrón, no si es significativo.
 
-- **Código:** [licencia MIT](LICENSE).
-- **Contenidos educativos:** condiciones recogidas en [LICENCIA-CONTENIDOS.md](LICENCIA-CONTENIDOS.md).
-- Los logotipos institucionales quedan excluidos de estas licencias.
+## Historial de cambios
+
+Consulta [`docs/CAMBIOS.md`](docs/CAMBIOS.md). El informe de la reorganización en tres espacios está en [`INFORME-5-FASES.md`](INFORME-5-FASES.md) y la documentación de la versión anterior, en [`docs/historial/`](docs/historial/).
+
+## Licencias y créditos
+
+- **Contenidos:** © 2026 Eduar Ramírez Riveros, [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es). Ver [`LICENCIA-CONTENIDOS.md`](LICENCIA-CONTENIDOS.md).
+- **Código:** licencia MIT. Ver [`LICENSE`](LICENSE).
+- **Logotipos de ESIC University:** excluidos de ambas licencias.
+
+Todos los datos de los casos y simuladores son **simulados** con fines docentes. Referencia principal: León, O. G. y Montero, I. (2020). *Métodos de investigación en psicología y educación: las tradiciones cuantitativa y cualitativa* (4.ª ed.). McGraw-Hill.

@@ -154,6 +154,84 @@
       return [soloAB && pend < -0.2, pnds.every((x) => x === 1) && v >= 2, !soloAB && media(fase(2)) > media(fase(1)) + 2 && media(fase(3)) < media(fase(2)) - 2];
     } });
 
+  // ================================================================ 5. laboratorio del café (simetría e independencia)
+  B.simulador({ id: "cafe-2x2", unidad: ["t6"], icono: "☕", titulo: "Laboratorio del café: simetría e independencia",
+    resumen: "Café × horas de sueño. Mueve las casillas o los efectos y comprueba por qué la interacción es la misma desde las dos VI y por qué no depende de los efectos principales.",
+    caso: "c09",
+    html() { this.prev = null; return `<p class="contexto">Contexto: dos VI, <b>café</b> (sin / con) y <b>horas de sueño</b> (8 h / 4 h). VD = atención (0-14 puntos). Datos de ejemplo, sin error muestral.</p>
+      <div class="cf-esc" role="group" aria-label="Escenarios">${[["Ejemplo del café", "8,4,8,7"], ["Solo café", "5,5,8,8"], ["Dos efectos sin interacción", "8,4,10,6"], ["Interacción cruzada", "8,4,5,7"], ["Sin efectos principales", "8,4,4,8"]].map(([t, v]) => `<button type="button" class="boton peq sec" data-cf="${v}">${t}</button>`).join("")}</div>
+      <p><label><input type="checkbox" id="cf-modo"> Mover los <b>efectos</b> en lugar de las casillas</label></p>
+      <div class="desls" id="cf-celdas">${deslizador("cf-n8", "Sin café · 8 h", 0, 14, 0.5, 8)}${deslizador("cf-n4", "Sin café · 4 h", 0, 14, 0.5, 4)}${deslizador("cf-c8", "Con café · 8 h", 0, 14, 0.5, 8)}${deslizador("cf-c4", "Con café · 4 h", 0, 14, 0.5, 7)}</div>
+      <div class="desls" id="cf-efectos" hidden>${deslizador("cf-mu", "Media general", 2, 12, 0.25, 6.75)}${deslizador("cf-a", "Efecto principal del café", -6, 6, 0.5, 1.5)}${deslizador("cf-b", "Efecto principal de dormir 4 h", -6, 6, 0.5, -2.5)}${deslizador("cf-i", "Interacción", -8, 8, 0.5, 3)}</div>
+      <p class="nota" id="cf-aviso"></p>
+      <div class="cf-graficos"><div><h4>Sueño en el eje X · café como líneas</h4><div id="cf-gA"></div><p class="leyenda-sim"><span class="s1">■ Sin café</span> <span class="s2">■ Con café</span></p><p class="cf-pie" id="cf-pA"></p></div>
+        <div><h4>Café en el eje X · sueño como líneas</h4><div id="cf-gB"></div><p class="leyenda-sim"><span class="s3">■ 8 h de sueño</span> <span class="s4">■ 4 h de sueño</span></p><p class="cf-pie" id="cf-pB"></p></div></div>
+      <div id="cf-res" class="sim-res"></div>`; },
+    retos: [{ txt: "Consigue <b>líneas paralelas</b> (interacción 0) con un efecto del café distinto de cero. ¿Cuánto vale la interacción en el otro gráfico?" },
+            { txt: "Consigue una interacción de <b>±4</b> con los <b>dos efectos principales a 0</b>. Pista: activa «Mover los efectos»." },
+            { txt: "Busca un patrón <b>cruzado en un gráfico y ordinal en el otro</b>. Pista: prueba 8, 2, 6, 4." }],
+    actualizar() {
+      const ids = { n8: "cf-n8", n4: "cf-n4", c8: "cf-c8", c4: "cf-c4" }, eids = { mu: "cf-mu", a: "cf-a", b: "cf-b", i: "cf-i" };
+      const set = (id, v) => { const el = document.getElementById(id); el.value = v; document.getElementById(id + "-v").textContent = el.value; };
+      const modoEf = document.getElementById("cf-modo").checked;
+      document.getElementById("cf-celdas").hidden = modoEf; document.getElementById("cf-efectos").hidden = !modoEf;
+      // escenarios (se enlazan una vez)
+      document.querySelectorAll("[data-cf]").forEach((b) => { if (b.dataset.on) return; b.dataset.on = 1; b.addEventListener("click", () => {
+        const v = b.dataset.cf.split(",").map(Number); document.getElementById("cf-modo").checked = false;
+        ["cf-n8", "cf-n4", "cf-c8", "cf-c4"].forEach((id, k) => set(id, v[k])); this.prev = null; document.getElementById("cf-n8").dispatchEvent(new Event("input", { bubbles: true })); }); });
+      // estado exacto en this.C (los deslizadores redondean; así no se pierde precisión al cambiar de modo)
+      const deCeldas = (c) => ({ mu: (c.n8 + c.n4 + c.c8 + c.c4) / 4, a: ((c.c8 + c.c4) - (c.n8 + c.n4)) / 2, b: ((c.n4 + c.c4) - (c.n8 + c.c8)) / 2, i: (c.c4 - c.n4) - (c.c8 - c.n8) });
+      const deEfectos = (e) => ({ n8: e.mu - e.a / 2 - e.b / 2 + e.i / 4, n4: e.mu - e.a / 2 + e.b / 2 - e.i / 4, c8: e.mu + e.a / 2 - e.b / 2 - e.i / 4, c4: e.mu + e.a / 2 + e.b / 2 + e.i / 4 });
+      const leeG = (m) => Object.fromEntries(Object.entries(m).map(([k, id]) => [k, lee(id)]));
+      const igual = (x, y) => Object.keys(x).every((k) => Math.abs(x[k] - y[k]) < 1e-9);
+      const SC = leeG(ids), SE = leeG(eids);
+      if (!this.prev) this.C = { ...SC };
+      else if (!modoEf && !igual(SC, this.prev.SC)) this.C = { ...SC };
+      else if (modoEf && !igual(SE, this.prev.SE)) this.C = deEfectos(SE);
+      let C = this.C; const E = deCeldas(C);
+      if (modoEf) Object.entries(ids).forEach(([k, id]) => set(id, C[k])); else Object.entries(eids).forEach(([k, id]) => set(id, E[k]));
+      if (!modoEf) Object.entries(ids).forEach(([k, id]) => { document.getElementById(id + "-v").textContent = String(Math.round(C[k] * 100) / 100).replace(".", ","); });
+      else Object.entries(eids).forEach(([k, id]) => { document.getElementById(id + "-v").textContent = String(Math.round(SE[k] * 100) / 100).replace(".", ","); });
+      this.prev = { SC: leeG(ids), SE: leeG(eids) };
+      const fuera = Object.values(C).some((v) => v < -1e-9 || v > 14 + 1e-9);
+      document.getElementById("cf-aviso").textContent = fuera ? "Alguna casilla queda fuera de la escala 0-14; el gráfico amplía el eje." : "";
+      const s = (x) => { const r = Math.round(x * 100) / 100; return (r > 0 ? "+" : r < 0 ? "−" : "") + String(Math.abs(r)).replace(".", ","); }, n = (x) => String(Math.round(x * 100) / 100).replace(".", ",");
+      const cafe8 = C.c8 - C.n8, cafe4 = C.c4 - C.n4, suenoNo = C.n4 - C.n8, suenoSi = C.c4 - C.c8;
+      const U = 0.25, tipo = (e1, e2) => Math.abs(e1 - e2) < U ? "sin" : (Math.abs(e1) < U || Math.abs(e2) < U) ? "nulo" : Math.sign(e1) === Math.sign(e2) ? "ordinal" : "cruzada";
+      const tA = tipo(cafe8, cafe4), tB = tipo(suenoNo, suenoSi);
+      const vals = Object.values(C), lo = Math.min(0, Math.floor(Math.min(...vals))), hi = Math.max(14, Math.ceil(Math.max(...vals)));
+      const graf = (l1, l2, c1, c2, cats, n1, n2) => {
+        const L = lienzo(420, 260, [0, 1], [lo, hi], { sinX: true, bx: true, ylab: "Atención", titulo: "Gráfico de interacción" }), xs = [L.X(0.22), L.X(0.72)];
+        let g = L.s;
+        [0, 1].forEach((j) => { const a = l1[j], b = l2[j]; if (Math.abs(a - b) < 0.01) return; const xx = xs[j] - 20;
+          g += `<line x1="${xx}" x2="${xx}" y1="${L.Y(a)}" y2="${L.Y(b)}" class="cf-sep"/><line x1="${xx - 4}" x2="${xx + 4}" y1="${L.Y(a)}" y2="${L.Y(a)}" class="cf-sep"/><line x1="${xx - 4}" x2="${xx + 4}" y1="${L.Y(b)}" y2="${L.Y(b)}" class="cf-sep"/><text x="${xx - 6}" y="${(L.Y(a) + L.Y(b)) / 2 + 4}" text-anchor="end" class="eje cf-sep-t">${s(b - a)}</text>`; });
+        [[l1, c1, n1], [l2, c2, n2]].forEach(([l, c, nm], k) => { g += `<polyline points="${xs[0]},${L.Y(l[0])} ${xs[1]},${L.Y(l[1])}" class="${c}"/><circle cx="${xs[0]}" cy="${L.Y(l[0])}" r="5" class="${c} p"/><circle cx="${xs[1]}" cy="${L.Y(l[1])}" r="5" class="${c} p"/>`;
+          const dy = L.Y(l1[1]) - L.Y(l2[1]), cerca = Math.abs(dy) < 16, arriba = k === 0 ? dy <= 0 : dy > 0;
+          g += `<text x="${xs[1] + 10}" y="${L.Y(l[1]) + (cerca ? (arriba ? -6 : 14) : 4)}" class="eje fuerte">${nm} (${n(l[1])})</text>`; });
+        g += `<text x="${xs[0]}" y="${L.h - 26}" text-anchor="middle" class="eje fuerte">${cats[0]}</text><text x="${xs[1]}" y="${L.h - 26}" text-anchor="middle" class="eje fuerte">${cats[1]}</text>`;
+        return L.fin(g); };
+      document.getElementById("cf-gA").innerHTML = graf([C.n8, C.n4], [C.c8, C.c4], "serie1", "serie2", ["8 h", "4 h"], "Sin café", "Con café");
+      document.getElementById("cf-gB").innerHTML = graf([C.n8, C.c8], [C.n4, C.c4], "serie3", "serie4", ["Sin café", "Con café"], "8 h", "4 h");
+      const nombre = { sin: "líneas paralelas, sin interacción", nulo: "la VI solo actúa en uno de los niveles", ordinal: "interacción ordinal en este gráfico", cruzada: "interacción cruzada en este gráfico" };
+      document.getElementById("cf-pA").innerHTML = `Separación (efecto del café): <b>${s(cafe8)}</b> con 8 h y <b>${s(cafe4)}</b> con 4 h. Cambia en <b>${s(cafe4 - cafe8)}</b>: ${nombre[tA]}.`;
+      document.getElementById("cf-pB").innerHTML = `Separación (efecto de dormir 4 h): <b>${s(suenoNo)}</b> sin café y <b>${s(suenoSi)}</b> con café. Cambia en <b>${s(suenoSi - suenoNo)}</b>: ${nombre[tB]}.`;
+      const barra = (et, v, max, cl) => { const w = Math.min(50, Math.abs(v) / max * 50); return `<div class="cf-barra"><span>${et}</span><span class="cf-pista"><i class="${cl}" style="width:${w}%;left:${v >= 0 ? 50 : 50 - w}%"></i></span><b>${s(v)}</b></div>`; };
+      const hay = Math.abs(E.i) >= U;
+      const ver = !hay ? `El efecto del café es el mismo con 8 h y con 4 h (${s(cafe8)}): <b>no hay interacción</b> y el efecto principal del café (${s(E.a)}) resume bien los datos.`
+        : `El efecto del café cambia según el sueño (${s(cafe8)} con 8 h, ${s(cafe4)} con 4 h): <b>hay interacción</b> de ${s(E.i)}. ` +
+          (tA === "cruzada" || tB === "cruzada" ? "Al menos en un gráfico cambia de signo (cruzada): el efecto principal promedia efectos opuestos; cuenta la historia con los efectos simples." : `El efecto principal del café (${s(E.a)}) es un promedio que no describe a nadie en concreto: matízalo con los efectos simples.`);
+      document.getElementById("cf-res").innerHTML = `<table class="tabla mini"><tr><th></th><th>8 h</th><th>4 h</th><th>Media marginal</th></tr>
+          <tr><th>Sin café</th><td>${n(C.n8)}</td><td>${n(C.n4)}</td><td>${n((C.n8 + C.n4) / 2)}</td></tr><tr><th>Con café</th><td>${n(C.c8)}</td><td>${n(C.c4)}</td><td>${n((C.c8 + C.c4) / 2)}</td></tr>
+          <tr><th>Media marginal</th><td>${n((C.n8 + C.c8) / 2)}</td><td>${n((C.n4 + C.c4) / 2)}</td><td>${n(E.mu)}</td></tr></table>
+        <div class="kpis"><div><b>${s(cafe8)} / ${s(cafe4)}</b>efectos simples del café (8 h / 4 h)</div><div><b>${s(E.a)}</b>efecto principal del café</div><div><b>${s(E.b)}</b>efecto principal de dormir 4 h</div><div><b>${s(E.i)}</b>interacción</div></div>
+        <div class="callout ${hay ? "warn" : "ok"}">${ver}</div>
+        <div class="cf-ideas"><div class="callout info"><b>1 · Es simétrica.</b> Desde el café: (${s(cafe4)}) − (${s(cafe8)}) = <b>${s(cafe4 - cafe8)}</b>. Desde el sueño: (${s(suenoSi)}) − (${s(suenoNo)}) = <b>${s(suenoSi - suenoNo)}</b>. Siempre sale el mismo número: la interacción es de las dos VI.</div>
+          <div class="callout info"><b>2 · Es independiente.</b> Activa «Mover los efectos» y mueve solo la interacción: cambian las casillas, pero los efectos principales no.${barra("Café", E.a, 6, "cf-b1")}${barra("Sueño", E.b, 6, "cf-b2")}${barra("Interacción", E.i, 8, "cf-b3")}</div></div>
+        <p class="nota">Simulador descriptivo: trabaja con medias, sin error muestral. En el ANOVA, cada uno de estos tres efectos tiene su propia F.</p>`;
+      const ef = (x) => Math.abs(x) >= U;
+      return [!hay && ef(E.a), Math.abs(Math.abs(E.i) - 4) < 0.01 && !ef(E.a) && !ef(E.b), (tA === "cruzada" && tB === "ordinal") || (tA === "ordinal" && tB === "cruzada")];
+    } });
+
   // ---------------- vistas ----------------
   B.vista("simuladores", (main) => {
     main.innerHTML = `<section class="tarjeta cabecera-vista"><h1>Simuladores</h1><p class="lead">Laboratorios de «¿qué pasaría si…?». Mueve los controles, observa y completa los retos: así se entiende por qué cambian la p, el tamaño del efecto o la lectura de un gráfico.</p></section>

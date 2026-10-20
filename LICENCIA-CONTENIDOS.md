@@ -15,7 +15,8 @@ Se consideran contenidos:
 - los ítems y su retroalimentación,
 - las tarjetas y los tests,
 - los datos simulados (CSV) y sus diccionarios,
-- los gráficos generados.
+- los gráficos generados,
+- las capturas de pantalla de la documentación (`docs/capturas/`).
 
 ## Puedes
 
@@ -31,7 +32,8 @@ Se consideran contenidos:
 
 ## Exclusiones
 
-- **Logotipos de ESIC University** (carpeta `img/`): son marcas de su titular y no están cubiertos por esta licencia ni por la licencia MIT del código.
+- **Logotipos de ESIC University** (`img/logo-esic-azul.png` e `img/logo-esic-blanco.png`): son marcas de su titular y no están cubiertos por esta licencia ni por la licencia MIT del código.
+- **Imágenes de Eduar** (`img/eduar/`): representan al autor. Su uso fuera de Brújula requiere su permiso.
 - **Obras de terceros citadas:** la bibliografía y los estudios mencionados en los casos son de sus autores. León y Montero (2020), Floyd et al. (1996) y Fernández et al. (1997), entre otros, se citan con fines docentes; los casos solo reproducen su diseño y usan datos simulados.
 - **JASP** es software libre de sus autores (https://jasp-stats.org); Brújula solo enlaza a su descarga.
 
