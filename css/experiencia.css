@@ -26,3 +26,21 @@ h1,h2,h3 {font-weight:500;letter-spacing:-.6px;color:var(--marino);line-height:1
 
 /* El retrato de reposo permanece visible al cargar o cambiar los GIF. */
 .mentor-retrato{background:#fff url("../img/eduar/eduar-reposo.png") center top / cover no-repeat}
+
+/* Laboratorio del café (simulador cafe-2x2) */
+.sim-svg .serie3 { fill: none; stroke: #0A8F7B; stroke-width: 2.5; } .sim-svg .serie3.p { fill: #0A8F7B; }
+.sim-svg .serie4 { fill: none; stroke: #7B3F9E; stroke-width: 2.5; } .sim-svg .serie4.p { fill: #7B3F9E; }
+.sim-svg .cf-sep { stroke: #C2410C; stroke-width: 2; } .sim-svg .cf-sep-t { fill: #C2410C; font-weight: 700; }
+.leyenda-sim .s3 { color: #0A8F7B; } .leyenda-sim .s4 { color: #7B3F9E; }
+.cf-esc { display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0 4px; }
+.cf-graficos { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin: 8px 0 12px; }
+.cf-graficos h4 { margin: 0 0 6px; font-size: 15px; }
+.cf-pie { font-size: 14px; margin: 4px 0 0; }
+.cf-ideas { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.cf-barra { display: grid; grid-template-columns: 90px minmax(0, 1fr) 46px; gap: 8px; align-items: center; font-size: 14px; margin-top: 6px; }
+.cf-pista { height: 10px; background: #EEF1F7; border-radius: 5px; position: relative; overflow: hidden; }
+.cf-pista::after { content: ""; position: absolute; left: 50%; top: 0; bottom: 0; width: 1px; background: #9AA5BF; }
+.cf-pista i { position: absolute; top: 0; bottom: 0; border-radius: 5px; }
+.cf-b1 { background: #FF9606; } .cf-b2 { background: #7B3F9E; } .cf-b3 { background: #C2410C; }
+.cf-barra b { text-align: right; }
+@media (max-width: 760px) { .cf-graficos, .cf-ideas { grid-template-columns: 1fr; } }
