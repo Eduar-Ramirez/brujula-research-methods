@@ -1,0 +1,97 @@
+/* Brújula 3 · componentes nuevos (noviembre de 2026): teoría S8-S13, simuladores, panel sorpresa,
+   Taller del Método INDAGA, Charo IA y mapa de dominio. */
+
+/* ---------- teoría ---------- */
+.notacion{font-family:"Courier New",monospace;background:#f7f8fc;border:1px solid var(--borde);border-radius:8px;padding:10px 14px;margin:8px 0;font-size:15px;line-height:1.7;color:var(--marino);overflow-x:auto}
+.notacion div{white-space:pre}.notacion-tit{font-family:var(--cuerpo);font-size:12px;color:var(--texto2);margin:0 0 4px}
+.definicion{background:var(--azul);color:#fff;border-radius:10px;padding:14px 18px;margin:12px 0;font-size:15px;line-height:1.55}
+.definicion b{color:#0AE4C3}
+
+/* ---------- simuladores ---------- */
+.rm-gris{fill:#b9c1d3}
+.ka-fila{display:flex;align-items:center;gap:3px;flex-wrap:wrap;margin:6px 0}.ka-fila b{width:18px}
+.ka-c{width:10px;height:22px;border:1px solid var(--azul);border-radius:3px;background:#fff}.ka-c.si{background:var(--azul)}.ka-c.dis{outline:2px solid #C93C3C;outline-offset:1px}
+.sim select{font:inherit;padding:6px 8px;border-radius:8px;border:1px solid var(--borde)}
+
+/* ---------- panel sorpresa ---------- */
+.panel-feature{display:flex;gap:20px;align-items:center;background:#fff4e2;border:1px solid #f4c98a;border-radius:14px;padding:22px 26px;text-decoration:none;color:inherit;margin:0 0 22px}
+.panel-feature h2{margin:4px 0;font-size:26px}.panel-feature p{margin:0}
+.panel-glyph{font:700 40px var(--titulo);color:#c76a00;min-width:56px;text-align:center}
+.panel-resumen,.dominio-resumen{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;margin:14px 0 18px}
+.panel-resumen div,.dominio-resumen div{background:var(--fondo);border-radius:10px;padding:10px 14px;font-size:13px;color:var(--texto2)}
+.panel-resumen b,.dominio-resumen b{display:block;font:600 26px var(--titulo);color:var(--marino)}
+.panel-lista{list-style:none;padding:0;margin:0;display:grid;gap:16px}
+.panel-item{background:#fff;border:1px solid var(--borde);border-radius:14px;padding:20px 22px}
+.panel-item.bien{border-left:5px solid var(--ok)}.panel-item.mal{border-left:5px solid var(--mal)}
+.panel-cab{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;font-size:12px;margin-bottom:8px}
+.panel-sem{background:var(--suave);color:var(--azul);border-radius:20px;padding:4px 10px;font-weight:600}
+.panel-p{color:var(--texto2)}
+.panel-opts{list-style:none;padding:0;margin:10px 0;display:grid;gap:8px}
+.panel-opts li{display:grid;grid-template-columns:1fr 150px;gap:14px;align-items:center;border:1px solid var(--borde);border-radius:10px;padding:10px 12px}
+.panel-opts li.correcta{background:#eaf6ef;border-color:#9fd3b6}.panel-opts li.erronea{background:#fcedec;border-color:#e8b3ae}
+.panel-opts .por{font-size:12px;color:var(--texto2);margin:4px 0 0}
+.panel-barra{position:relative;height:20px;background:#eef1f7;border-radius:6px;overflow:hidden}
+.panel-barra i{position:absolute;left:0;top:0;bottom:0;background:#9db4f5}.panel-barra span{position:relative;font-size:12px;padding-left:6px;line-height:20px}
+.sorpresa{text-align:center}.sorpresa-big{font:700 44px var(--titulo);color:#c76a00;margin:0}
+@media(max-width:560px){.panel-opts li{grid-template-columns:1fr}.panel-feature{padding:18px}.panel-glyph{display:none}}
+
+/* ---------- Taller del Método ---------- */
+.indaga-feature{background:#e6f0ff;border-color:#b8cdf5}.indaga-feature .decision-glyph{color:var(--azul);font-size:44px}
+.indaga-progreso{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 12px}.indaga-progreso span{font-size:12px;border:1px solid var(--borde);border-radius:20px;padding:5px 10px;background:#fff}
+.indaga-progreso span.hecha{background:#eaf6ef;border-color:#9fd3b6;color:var(--ok)}
+.indaga .campo{display:block;margin:10px 0}.indaga .campo span{display:block;font-weight:600;font-size:14px;margin-bottom:4px}.indaga .campo small{display:block;color:var(--texto2);margin-bottom:4px}
+.indaga textarea{min-height:0;height:auto;resize:vertical}
+.indaga textarea,.indaga input[type=text],.indaga input[type=number],.indaga select{width:100%;box-sizing:border-box;font:inherit;font-size:14px;padding:8px 10px;border:1px solid var(--borde);border-radius:8px;background:#fff}
+.indaga .instrumento{border:1px solid var(--borde);border-radius:10px;padding:8px 14px;margin:12px 0}.indaga legend{font-weight:700;color:var(--azul);padding:0 6px}
+.indaga .tres-col{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 12px}
+.indaga .check{display:flex;gap:8px;align-items:flex-start;margin:8px 0;font-size:14px}
+.indaga .sugerencia{background:var(--suave);border-radius:8px;padding:8px 12px;margin:6px 0}.indaga .sugerencia:empty{display:none}
+.revisor{list-style:none;padding:0}.revisor>li{border-left:4px solid var(--ok);padding:6px 10px;margin:6px 0;background:#f7f8fc;font-size:14px}.revisor>li.aviso-p{border-color:#c76a00}.revisor ul{margin:4px 0 0 18px;color:#8a4a00}
+.borrador{border:1px dashed var(--borde);border-radius:10px;padding:14px 18px;background:#fffef8}.borrador h4{margin:12px 0 4px}
+.comprobacion{list-style:none;padding:0}.comprobacion li{padding:4px 0;color:var(--texto2)}.comprobacion li.si{color:var(--ok);font-weight:600}
+.charo-btn{margin-top:8px}
+@media(max-width:860px){.indaga .tres-col{grid-template-columns:1fr}}
+
+/* ---------- Charo IA ---------- */
+.charo-boton{position:fixed;right:20px;bottom:20px;z-index:40;display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--borde);border-radius:40px;padding:6px 16px 6px 6px;box-shadow:0 6px 24px #00144722;cursor:pointer;font:inherit;font-size:13px;color:var(--marino)}
+.charo-boton img{width:42px;height:42px;border-radius:50%;object-fit:cover}
+.charo-boton:hover{border-color:var(--azul)}
+.charo-fondo{position:fixed;inset:0;background:#00144733;z-index:44}
+.charo-panel{position:fixed;top:0;right:0;bottom:0;width:min(420px,100%);background:#fff;z-index:45;box-shadow:-8px 0 30px #00144726;display:flex;flex-direction:column;transform:translateX(105%);transition:transform .25s ease;visibility:hidden}
+.charo-panel.abierto{transform:none;visibility:visible}
+@media(prefers-reduced-motion:reduce){.charo-panel{transition:none}}
+.charo-cab{display:flex;gap:12px;align-items:center;padding:14px 16px;background:#f7f3ee;border-bottom:1px solid #eadfcf}
+.charo-cab img{width:56px;height:56px;border-radius:50%;object-fit:cover;border:2px solid #fff}
+.charo-cab h2{margin:0;font-size:24px}.charo-cab p{margin:2px 0 0;font-size:12px;color:var(--texto2)}
+.charo-x{margin-left:auto;border:0;background:none;font-size:26px;cursor:pointer;color:var(--marino)}
+.charo-modos{display:flex;gap:6px;padding:10px 16px 0}.charo-modos button{flex:1;border:1px solid var(--borde);background:#fff;border-radius:20px;padding:6px;font:inherit;font-size:12px;cursor:pointer}
+.charo-modos button[aria-checked=true]{background:var(--azul);border-color:var(--azul);color:#fff}
+.charo-ctx{margin:8px 16px 0;font-size:11px;color:var(--texto2);background:var(--fondo);border-radius:8px;padding:6px 10px}
+.charo-msgs{flex:1;overflow-y:auto;padding:12px 16px;display:flex;flex-direction:column;gap:10px}
+.charo-b{max-width:92%;border-radius:12px;padding:9px 12px;font-size:14px;line-height:1.5}.charo-b p{margin:0 0 6px}.charo-b p:last-child{margin:0}.charo-b ul,.charo-b ol{margin:4px 0 4px 18px;padding:0}
+.charo-b.ella{background:#f5f4ef;border:1px solid #e4e3d9;align-self:flex-start}.charo-b.yo{background:var(--suave);align-self:flex-end}
+.charo-rol{display:block;font-size:10px;letter-spacing:.5px;text-transform:uppercase;color:var(--texto2);margin-bottom:3px}
+.charo-b .boton{margin-top:8px}
+.charo-aviso{background:#fff4e2;border:1px solid #f4c98a;border-radius:10px;padding:10px 12px;font-size:13px}.charo-aviso ul{margin:6px 0 8px 16px;padding:0}
+.charo-form{padding:10px 16px;border-top:1px solid var(--borde)}.charo-form textarea{width:100%;box-sizing:border-box;font:inherit;font-size:14px;border:1px solid var(--borde);border-radius:10px;padding:8px 10px;resize:vertical}
+.saltar-l{position:absolute;left:-9999px}
+.charo-acc{display:flex;justify-content:space-between;margin-top:6px}
+.charo-estado{margin:0 16px;font-size:11px;color:var(--texto2);min-height:14px}
+.charo-pie{margin:4px 16px 12px;font-size:11px;color:var(--texto2)}
+.charo-homenaje{display:grid;grid-template-columns:minmax(0,320px) 1fr;gap:32px;align-items:start}
+.charo-homenaje img{width:100%;height:auto;border-radius:14px;box-shadow:var(--sombra)}
+@media(max-width:860px){.charo-homenaje{grid-template-columns:1fr}.charo-homenaje img{max-width:300px}.charo-boton span{display:none}.charo-boton{padding:5px;right:14px;bottom:14px}}
+@media print{.charo-boton,.charo-panel,.charo-fondo{display:none!important}}
+
+/* ---------- mapa de dominio ---------- */
+.dom-cab{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;flex-wrap:wrap}.dom-cab h2{margin:4px 0}
+.dominio-resumen .dom-dominado b{color:var(--ok)}.dominio-resumen .dom-repasar b{color:#c76a00}.dominio-resumen .dom-prioritario b{color:var(--mal)}
+.dominio-prior{background:#fff4e2;border-radius:10px;padding:10px 16px;margin-bottom:10px}.dominio-prior h3{margin:4px 0}
+.dom-sem{font-size:15px;margin:16px 0 6px;color:var(--azul)}
+ul.dominio{list-style:none;padding:0;margin:0;display:grid;gap:6px}
+ul.dominio li{display:flex;gap:12px;align-items:center;border:1px solid var(--borde);border-radius:10px;padding:8px 12px;background:#fff}
+ul.dominio small{display:block;color:var(--texto2);font-size:12px}
+.dom-ic{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-weight:700;background:#eef1f7;color:var(--texto2);flex:none}
+.dom-dominado .dom-ic{background:#e3f4ec;color:var(--ok)}.dom-repasar .dom-ic{background:#fff1dd;color:#c76a00}.dom-prioritario .dom-ic{background:#fcedec;color:var(--mal)}
+.dom-ir{margin-left:auto;font-size:13px;white-space:nowrap}
+.charo-form textarea{min-height:0;height:auto}

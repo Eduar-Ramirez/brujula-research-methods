@@ -1,0 +1,7 @@
+variable,que_representa,codificacion,nivel_jasp
+id,Identificador (aula y número),1A-01 a 4B-25,Nominal
+aula,Aula sorteada,1A a 4B,Nominal
+curso,Curso,1 a 4,Ordinal
+horas_sueno,Horas de sueño entre semana (autoinforme),horas,Escala
+movil_noche_min,Minutos de móvil en la cama antes de dormir,minutos,Escala
+ansiedad_gad7,Ansiedad (cuestionario GAD-7),0 a 21,Escala

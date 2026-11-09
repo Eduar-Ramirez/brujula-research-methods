@@ -1,0 +1,7 @@
+variable,que_representa,codificacion,nivel_jasp
+id,Identificador,R001 a R120,Nominal
+pareja,Pareja de emparejamiento (caso y control),PJ01 a PJ60,Nominal
+grupo,VD: abandonó el grado o continúa,abandono · continua,Nominal
+curso_ingreso,Año de ingreso (variable de emparejamiento),2021 a 2023,Nominal
+sexo_emparejado,Sexo (variable de emparejamiento),mujer · hombre,Nominal
+trabaja20h,VI: trabajaba 20 h o más a la semana durante el primer curso (registro),si · no,Nominal

@@ -1,0 +1,6 @@
+variable,que_representa,codificacion,nivel_jasp
+estudiante,Identificador,E001 a E120,Nominal
+motivacion_sep,Motivación por aprender (septiembre),1 a 7,Escala
+conocimiento_previo_sep,Prueba de conocimiento previo (septiembre),0 a 10,Escala
+habitos_estudio_sep,Hábitos de estudio (septiembre),1 a 5,Escala
+nota_junio,VD: nota final de la asignatura (junio),0 a 10,Escala

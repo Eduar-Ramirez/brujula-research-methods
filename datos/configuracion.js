@@ -8,7 +8,7 @@ Brujula.config({
      "activa"          → visible y completa
      "en-preparacion"  → visible con la etiqueta «En preparación» (teoría y repaso disponibles)
      "oculta"          → no aparece en ningún sitio
-     Identificadores: fund, cuali, t4, t5, t6, t7, cuasi, epf, desc
+     Identificadores: fund, cuali, t4, t5, t6, t7, cuasi, epf, desc, analisis, apa, etica
      Ejemplo: estados: { cuasi: "activa", desc: "oculta" }                                */
   estados: {},
 
@@ -33,13 +33,13 @@ Brujula.config({
     { sem: 5, titulo: "Experimentos con un solo grupo", unidad: "t5", caso: "c05", reto: "Reto 1 · 1.ª entrega del trabajo" },
     { sem: 6, titulo: "Diseños factoriales", unidad: "t6", caso: "c09" },
     { sem: 7, titulo: "Diseño de caso único", unidad: "t7", caso: "c15" },
-    { sem: 8, titulo: "Diseños cuasiexperimentales", unidad: "cuasi", reto: "Reto 2 · Parcial 1 (29 de octubre)", parcial: true },
-    { sem: 9, titulo: "Diseños no experimentales: descriptivos, correlacionales y ex post facto", unidad: "epf" },
-    { sem: 10, titulo: "Selección de la muestra y recogida de datos", unidad: "desc" },
-    { sem: 11, titulo: "Análisis de datos cuantitativos" },
-    { sem: 12, titulo: "Presentación de datos (APA)", reto: "Reto 3 · 2.ª entrega del trabajo" },
-    { sem: 13, titulo: "Consideraciones éticas" },
-    { sem: 14, titulo: "Repaso general", reto: "Reto 4 · Parcial 2 (10 de diciembre)" },
+    { sem: 8, titulo: "Diseños cuasiexperimentales", unidad: "cuasi", caso: "c16", reto: "Reto 2 · Parcial 1 (29 de octubre)" },
+    { sem: 9, titulo: "Diseños no experimentales: descriptivos, correlacionales y ex post facto", unidad: "epf", caso: "c17" },
+    { sem: 10, titulo: "Selección de la muestra y recogida de datos", unidad: "desc", caso: "c18" },
+    { sem: 11, titulo: "Análisis de datos cuantitativos", unidad: "analisis" },
+    { sem: 12, titulo: "Presentación de datos (APA)", unidad: "apa", reto: "Reto 3 · 2.ª entrega del trabajo (INDAGA, Método: 25-26 de noviembre)" },
+    { sem: 13, titulo: "Consideraciones éticas", unidad: "etica" },
+    { sem: 14, titulo: "Repaso general", reto: "Reto 4 · Parcial 2 (jueves 10 de diciembre)", parcial: true },
     { sem: 15, titulo: "Defensa del trabajo", reto: "Reto 5 · Entrega final y póster" }
   ],
 
@@ -49,16 +49,26 @@ Brujula.config({
      - umbralJasp: proporción de lecturas de salidas de JASP correctas.
      - reparto: ítems fáciles (1), medios (2) y difíciles (3) del simulacro.
      - temas: ítems por semana del cronograma (S1…S7). La suma debe ser igual a «items».
-     Para el parcial 2 bastará con cambiar fecha, ruta, temas y el banco de ítems.          */
+     Para cambiar de parcial: fecha, ruta, etiquetas, temas y el banco de ítems (datos/items_parcialN.js).          */
   parcial: {
-    nombre: "Parcial 1",
-    fecha: "2026-10-29T09:00:00",
-    ruta: ["c13", "c14", "c01", "c05", "c09", "c10", "c15"],
+    nombre: "Parcial 2",
+    fecha: "2026-12-10T09:00:00",
+    semanas: "8 a 13",
+    ruta: ["c16", "c19", "c17", "c18"],
+    // etiqueta de cada parada de la ruta: [semana, tema, unidad]
+    etiquetas: { c16: ["Semana 8", "Cuasi experimento de clase", "cuasi"], c19: ["Semana 9", "Ex post facto retrospectivo", "epf"],
+                 c17: ["Semana 9", "Ex post facto prospectivo", "epf"], c18: ["Semana 10", "Muestreo, encuesta y correlación", "desc"] },
     umbral: 0.6,
     umbralJasp: 0.6,
     items: 20,
     reparto: { 1: 5, 2: 10, 3: 5 },
-    temas: { S1: 2, S2: 2, S3: 3, S4: 4, S5: 3, S6: 3, S7: 3 },
+    temas: { S8: 4, S9: 5, S10: 4, S11: 3, S12: 2, S13: 2 },
     jasp: "https://jasp-stats.org/download/"
-  }
+  },
+
+  /* Panel sorpresa con ítems del Parcial I: se abre solo una vez (y siempre desde Desafíos). false para desactivarlo. */
+  panelSorpresa: true,
+
+  /* Taller del Método (Proyecto INDAGA, Fase 2). */
+  indaga: { entrega: "25 y 26 de noviembre de 2026" }
 });

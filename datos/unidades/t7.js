@@ -109,7 +109,33 @@ Brujula.unidad({
    "def": "Fase de registro sin ninguna intervención, en diseños de caso único."
   }
  ],
- "emparejar": [],
+ "emparejar": [
+  {
+   "label": "Set · Diseños de caso único",
+   "pairs": [
+    {
+     "left": "Se registran las horas de consumo de alcohol de un paciente durante 2 semanas, se aplica tratamiento 2 semanas, se retira 2 semanas y se vuelve a aplicar",
+     "right": "ABAB",
+     "exp": "Ejemplo didáctico: A₁B₁A₂B₂. Si el consumo vuelve al nivel basal al retirar el tratamiento (A₂) y baja de nuevo al reintroducirlo (B₂), el tratamiento es responsable de la mejora."
+    },
+    {
+     "left": "Se entrena a un niño primero en preguntas conversacionales, luego en contacto visual, luego en respuestas conversacionales",
+     "right": "Línea base múltiple",
+     "exp": "Fernández et al. (1997): la intervención se introduce escalonadamente en distintas conductas del mismo sujeto."
+    },
+    {
+     "left": "Se miden las horas de consumo durante 1 semana sin tratamiento y se introduce el programa en la 2ª semana",
+     "right": "Diseño AB",
+     "exp": "Diseño básico de caso único: una fase de línea base (A) seguida de una fase de intervención (B)."
+    },
+    {
+     "left": "Se cuenta qué porcentaje de los puntos de la fase B queda por debajo del valor más bajo de la línea base",
+     "right": "PND (no solapamiento)",
+     "exp": "Porcentaje de datos no solapados: cuanto más alto, más clara la diferencia entre fases."
+    }
+   ]
+  }
+ ],
  "simuladores": [
   "abab"
  ],

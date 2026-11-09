@@ -1,0 +1,6 @@
+variable,que_representa,codificacion,nivel_jasp
+participante,"Código nuevo, sin relación con la persona",P01 a P19,Nominal
+grupo,Condición asignada por el lado del aula,entrenamiento · comparacion,Nominal
+pre,Aciertos en la forma A del RMET (pretest),0 a 18,Escala
+post,Aciertos en la forma B del RMET (postest),0 a 18; vacío si no hizo la parte 2,Escala
+completo,Hizo las dos partes,si · no,Nominal
