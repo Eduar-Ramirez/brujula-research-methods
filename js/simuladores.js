@@ -249,7 +249,10 @@
       const prev = B.S().sims[s.id], hechos = interaccion ? marcaSim(s.id, r) : s.retos.map((_, i) => !!(prev && prev.retos && prev.retos[i])); document.getElementById("sim-retos").innerHTML = retosHtml(s.retos, hechos); };
     main.querySelectorAll("input").forEach((x) => x.addEventListener("input", () => pinta(true)));
     const nuevo = document.getElementById("ab-nuevo"); if (nuevo) nuevo.addEventListener("click", () => { s.semilla += 1; pinta(true); });
+    main.querySelectorAll("[data-sim-nuevo]").forEach((b) => b.addEventListener("click", () => { s.semilla = (s.semilla || 1) + 1; pinta(true); }));
+    main.querySelectorAll("select").forEach((x) => x.addEventListener("change", () => pinta(true)));
     pinta(false);
   });
   B.estad = { pT, qT };
+  B.simAux = { lienzo, deslizador, lee, rng, normal, f1, f2, fmtp, pT, qT, phi, magnitud };
 })(window.Brujula);

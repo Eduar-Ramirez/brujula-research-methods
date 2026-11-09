@@ -17,8 +17,11 @@
     t6: ['¿Qué ocurre cuando dos factores actúan juntos?', ['Factores y niveles', 'Efectos principales', 'Interacción']],
     t7: ['¿Cómo estudiar un cambio en una sola persona?', ['Línea base', 'Fases de intervención', 'Análisis visual']],
     cuasi: ['¿Cómo investigar sin asignar individualmente al azar?', ['Grupos no equivalentes', 'Control', 'Validez interna']],
-    epf: ['¿Cómo estudiar diferencias que ya existen?', ['Sin manipulación', 'Explicaciones alternativas', 'Límites causales']],
-    desc: ['¿Cómo observar y recoger información?', ['Observación', 'Encuesta', 'Medición']]
+    epf: ['¿Qué podemos concluir cuando no podemos manipular?', ['Describir y relacionar', 'Terceras variables', 'Retrospectivo y prospectivo']],
+    desc: ['¿A quién preguntamos y cómo recogemos los datos?', ['Muestreo', 'Tamaño de la muestra', 'Cuestionario, entrevista y observación']],
+    analisis: ['¿Qué prueba pide mi diseño y qué leo en la salida?', ['Del diseño a la prueba', 'p, intervalo y efecto', 'Plan de análisis']],
+    apa: ['¿Cómo se cuenta una investigación para que otros la entiendan?', ['Estructura del informe', 'Resultados en APA', 'Citas y referencias']],
+    etica: ['¿Qué límites protegen a las personas que investigamos?', ['Casos históricos', 'Principios', 'Códigos actuales']]
   };
   const heading = (n, title, text) => `<header class="page-heading"><p class="eyebrow">${n}</p><h1>${title}</h1><p>${text}</p></header>`;
   const back = (href, text) => `<p class="miga"><a href="#${href}">← ${text}</a></p>`;
@@ -205,7 +208,7 @@
     main.innerHTML = heading('03 / INVESTIGAR', 'Libera el conocimiento', 'Resuelve misiones, trabaja con datos y explica tus conclusiones. El simulacro se abre con tu práctica.') +
       `<section class="unlock-panel"><div><p class="eyebrow">RUTA AL ${esc(p.nombre).toUpperCase()}</p><h2>${r.abierto ? 'Tu simulacro está desbloqueado' : 'Tu práctica abre la siguiente puerta'}</h2><p class="nota">${esc(p.nombre)} · ${new Date(p.fecha).toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' })}</p><p>Resuelve correctamente el ${pct(p.umbral)} % de los problemas de la ruta y el ${pct(p.umbralJasp)} % de las lecturas de JASP, sin consultar la respuesta razonada.</p></div><div>${req('Problemas de la ruta', r.ok, r.n, p.umbral)}${req('Lecturas de JASP', r.okj, r.nj, p.umbralJasp)}</div><div class="unlock-bottom"><span>${r.abierto ? 'Desbloqueo conservado en este navegador.' : 'Las dos metas son necesarias. Consultar una solución sirve para aprender, pero no suma.'}</span>${r.abierto ? '<a class="boton" href="#simulacro">Entrar al simulacro →</a>' : '<span class="locked-label">Simulacro pendiente</span>'}</div></section>
       <div class="explora-toolbar">${B.subnav('libera', [['ruta', `Ruta al ${p.nombre}`], ['todos', 'Todas las misiones']], tab)}${unitSelect('mision-tema', uid)}</div>
-      <p class="nota">${tab === 'ruta' ? 'Siete misiones sobre los contenidos de las semanas 1 a 7. Las semanas 1–2 comparten una misión y la semana 6 tiene dos.' : 'Las quince misiones disponibles. Solo las incluidas en la ruta cuentan para desbloquear el simulacro.'} Terminar el recorrido y resolver los problemas son avances diferentes.</p>
+      <p class="nota">${tab === 'ruta' ? `${p.ruta.length} misiones sobre los contenidos de las semanas ${esc(p.semanas || '')}.` : `Las ${allCases().length} misiones disponibles. Solo las incluidas en la ruta cuentan para desbloquear el simulacro.`} Terminar el recorrido y resolver los problemas son avances diferentes.</p>
       <div class="mission-list">${cases.map(missionCard).join('') || '<p class="tarjeta">Todavía no hay misiones para este tema.</p>'}</div>
       <section class="reference-strip"><h2>Tu mesa de trabajo</h2><div class="botonera"><a class="boton sec" href="${esc(p.jasp)}" target="_blank" rel="noopener">Descargar JASP ↗</a><button type="button" class="boton sec" data-ayuda="jasp">Guía de JASP</button><a class="boton sec" href="#consultar/ayudas">Fichas de análisis</a></div><p class="nota">Los datos son simulados. Los casos cualitativos tienen sus propias tareas, sin exigir JASP.</p></section>`;
     $('#mision-tema').addEventListener('change', e => B.ir(`libera/${tab}/${e.target.value}`));

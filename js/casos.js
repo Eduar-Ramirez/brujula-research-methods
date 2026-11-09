@@ -162,7 +162,7 @@
     const c = POR_ID[cid];
     main.innerHTML = `<p class="miga"><a href="#casos">Casos</a> › Caso ${c.num} ${B.unidadesDeCaso(c).map(B.chipUnidad).join("")}</p><div class="caso">
       <aside class="lateral">
-        <section class="tarjeta"><h3><span class="num">${c.num}</span>${c.titulo}</h3><div class="situacion">${c.situacion}</div><p class="nota">Datos simulados con fines docentes.</p></section>
+        <section class="tarjeta"><h3><span class="num">${c.num}</span>${c.titulo}</h3><div class="situacion">${c.situacion}</div><p class="nota">${c.reales ? "Datos reales de una actividad de clase, anonimizados." : "Datos simulados con fines docentes."}</p></section>
         <section class="tarjeta cuaderno" id="cuaderno"></section><section id="datos-caso"></section>
       </aside>
       <div><details class="tarjeta solo-movil" open><summary><span class="num">${c.num}</span> ${c.titulo} · situación</summary><div class="situacion">${c.situacion}</div></details>

@@ -34,7 +34,9 @@ Se consideran contenidos:
 
 - **Logotipos de ESIC University** (`img/logo-esic-azul.png` e `img/logo-esic-blanco.png`): son marcas de su titular y no están cubiertos por esta licencia ni por la licencia MIT del código.
 - **Imágenes de Eduar** (`img/eduar/`): representan al autor. Su uso fuera de Brújula requiere su permiso.
-- **Obras de terceros citadas:** la bibliografía y los estudios mencionados en los casos son de sus autores. León y Montero (2020), Floyd et al. (1996) y Fernández et al. (1997), entre otros, se citan con fines docentes; los casos solo reproducen su diseño y usan datos simulados.
+- **Ilustración de Charo** (`img/charo/`): imagen generada con IA en homenaje a Rosario (Charo) Martínez Arias. Se usa solo en Brújula y queda excluida de la licencia CC BY-NC-SA.
+- **Datos de la misión 16** (`datos/caso16_lectura_mirada.csv`): datos reales de una actividad de clase, anonimizados. Se pueden usar con fines docentes; no se pueden cruzar con otras fuentes para identificar a nadie.
+- **Obras de terceros citadas:** la bibliografía y los estudios mencionados en los casos son de sus autores. León y Montero (2015), Floyd et al. (1996) y Fernández et al. (1997), entre otros, se citan con fines docentes; los casos solo reproducen su diseño y usan datos simulados.
 - **JASP** es software libre de sus autores (https://jasp-stats.org); Brújula solo enlaza a su descarga.
 
 El **código** (HTML, CSS, JavaScript y scripts) se publica con la licencia MIT (archivo `LICENSE`).

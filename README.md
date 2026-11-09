@@ -76,26 +76,35 @@ Al leer bien la salida de JASP se desbloquea la salida de referencia, con su gr�
 
 ## Qué contiene
 
-Datos de esta versión (20/10/2026):
+Datos de la versión 3 (09/11/2026):
 
-| Unidad | Semana o tema | Estado | Secciones | Tarjetas | Preguntas | Emparejar | Simuladores | Casos |
-|---|---|---|---:|---:|---:|---:|---|---|
-| Método científico y tradiciones | Semanas 1-2 | activa | 6 | 15 | 8 | 1 | — | c13 |
-| Investigación cualitativa | Semana 3 | activa | 13 | 23 | 14 | — | — | c14 |
-| Experimentos con grupos distintos | Tema 4 | activa | 3 | 10 | 4 | 1 | Dos grupos | c01-c04, c12 |
-| Experimentos con el mismo grupo | Tema 5 | activa | 3 | 8 | 9 | 1 | Mismo grupo | c05-c08, c12 |
-| Diseños factoriales | Tema 6 | activa | 2 | 17 | 15 | 3 | Factorial 2 × 2 · Laboratorio del café | c09-c11 |
-| Diseños de caso único | Tema 7 | activa | 2 | 5 | 5 | 1 | Caso único ABAB | c15 |
-| Diseños cuasiexperimentales | Semana 8 | en preparación | 1 | 1 | 3 | — | — | — |
-| Diseños ex post facto | Semana 9 | en preparación | 1 | 2 | 2 | — | — | — |
-| Observación y encuesta | Semanas 9-10 | en preparación | 2 | 1 | 1 | — | — | — |
-| **Total** | | | **33** | **82** | **61** | **7** | **5** | **15** |
+| Unidad | Semana o tema | Secciones | Tarjetas | Preguntas | Emparejar | Simuladores | Misiones |
+|---|---|---:|---:|---:|---:|---|---|
+| Método científico y tradiciones | Semanas 1-2 | 6 | 15 | 8 | 1 | — | c13 |
+| Investigación cualitativa | Semana 3 | 13 | 23 | 14 | — | — | c14 |
+| Experimentos con grupos distintos | Tema 4 | 3 | 10 | 4 | 1 | Dos grupos | c01-c04, c12 |
+| Experimentos con el mismo grupo | Tema 5 | 3 | 8 | 9 | 1 | Mismo grupo | c05-c08, c12 |
+| Diseños factoriales | Tema 6 | 2 | 17 | 15 | 3 | Factorial 2 × 2 · Laboratorio del café | c09-c11 |
+| Diseños de caso único | Tema 7 | 2 | 5 | 5 | 1 | Caso único ABAB | c15 |
+| Diseños cuasiexperimentales | Semana 8 | 6 | 10 | 8 | 2 | Regresión a la media · Serie temporal | c16 |
+| Diseños no experimentales | Semana 9 | 6 | 12 | 8 | 2 | Tercera variable | c17, c19 |
+| Muestra y recogida de datos | Semana 10 | 6 | 12 | 8 | 2 | Muestreo · Potencia · Kappa | c18 |
+| Análisis de datos cuantitativos | Semana 11 | 3 | 6 | 4 | 1 | Potencia | (todas) |
+| Informe y APA 7 | Semana 12 | 3 | 6 | 4 | 1 | — | — |
+| Consideraciones éticas | Semana 13 | 3 | 5 | 4 | 1 | — | — |
+| **Total** | | **56** | **129** | **91** | **16** | **11** | **19** |
 
-**Casos.** Quince casos con 160 pasos. Doce tienen datos simulados para JASP (trece bases CSV, cada una con su diccionario de variables, y un gráfico de referencia); c04, c13 y c14 se resuelven sin datos. La ruta del parcial 1 son siete: c13, c14, c01, c05, c09, c10 y c15.
+**Misiones.** Diecinueve casos. La ruta del **Parcial 2** (10/12/2026) son c16, c19, c17 y c18; c16 usa los datos reales anonimizados de la actividad «Lectura de la mirada».
 
-**Simulacro.** 20 ítems (5 fáciles, 10 medios y 5 difíciles) sorteados de un banco de 93 sobre las semanas 1-7. Se abre al resolver, sin ver la respuesta, el 60 % de los problemas de la ruta y el 60 % de las lecturas de JASP.
+**Simulacro.** 20 ítems de 3 opciones (5 fáciles, 10 medios, 5 difíciles) de un banco de 65 sobre las semanas 8-13. Se abre al resolver, sin ver la respuesta, el 60 % de los problemas de la ruta y el 60 % de las lecturas de JASP. Los intentos del Parcial 1 se conservan aparte.
 
-**Lectura de JASP.** En cada análisis se pide un solo dato clave (la p, la F o la ε), explicado antes en lenguaje sencillo, y después una pregunta sobre lo que significa. La tolerancia acepta los redondeos de JASP y el formato «< .001»; si el valor no coincide, el desplegable «¿No te coincide?» recoge las causas habituales.
+**Panel sorpresa** (`#panel`). Catorce ítems del Parcial I, dos por semana, los de menor acierto. Se responde primero y después se ven la clave, el porcentaje de la clase en cada opción y por qué engaña el distractor más elegido.
+
+**Taller del Método** (`#indaga`). Cuatro estaciones para el apartado 6 del Proyecto INDAGA (Fase 2) y un borrador descargable en Word con la tabla de uso de IA.
+
+**Charo IA.** Tutora socrática con IA (botón abajo a la derecha y página `#charo`). Necesita desplegar el Worker de `backend-charo/` (ver [`GUIA-CHARO.md`](GUIA-CHARO.md)); mientras tanto, prepara la pregunta para copiarla.
+
+**Mi cuaderno.** Además de contadores e insignias, muestra el **mapa de dominio** de 18 conceptos de las semanas 8-13 (dominado, repasar, prioritario) con enlaces de repaso, y se puede imprimir.
 
 ## Eduar
 
@@ -116,14 +125,17 @@ Casi todo se cambia en **`datos/configuracion.js`**:
 | `estados` | Unidades activas, en preparación u ocultas, por ejemplo `estados: { cuasi: "activa" }`. |
 | `mostrarEnPreparacion` | Si las unidades en preparación aparecen en los menús. |
 | `inicioCurso` y `cronograma` | Semanas, títulos y unidad y caso de cada semana. La portada resalta la semana actual. |
-| `parcial` | Fecha del examen, casos de la ruta, umbrales (`umbral`, `umbralJasp`), reparto de dificultad e ítems por semana. |
+| `parcial` | Nombre, fecha, semanas, casos de la ruta y sus etiquetas, umbrales (`umbral`, `umbralJasp`), reparto de dificultad e ítems por semana. |
+| `panelSorpresa` | `false` desactiva el panel y su aviso en la portada. |
+| `indaga` | Fecha de entrega que muestra el Taller del Método. |
 
 Otras tareas:
 
 - **Añadir una unidad.** Copia un archivo de `datos/unidades/`, cambia `id`, `orden`, `bloque`, `tema` y `titulo`, añade su `<script>` en `index.html` y enlázala en el `cronograma`.
 - **Tarjetas, preguntas y emparejar.** Están en cada `datos/unidades/*.js` (`flash`, `test`, `emparejar`). El progreso de tarjetas y emparejar se guarda por posición: añade elementos al final en lugar de reordenar los existentes.
 - **Simuladores.** En `js/simuladores.js`. Cada uno declara a qué unidad pertenece y aparece solo en sus Desafíos.
-- **Casos y banco de ítems.** `datos/contenido.js` y `datos/items_parcial1.js` se **generan** fuera de esta carpeta (app de R y scripts del banco); no se editan a mano.
+- **Casos y banco de ítems.** `datos/contenido.js` (casos 1-15) se genera con la app de R; `datos/casos_parcial2.js`, `datos/items_parcial2.js` y `datos/panel_sorpresa.js` con los scripts de la carpeta del profesor. No se editan a mano. `datos/items_parcial1.js` se conserva, pero ya no se carga.
+- **Charo IA.** URL del Worker en `js/charo-config.js`; instrucciones en `GUIA-CHARO.md`.
 
 ## Probar en local
 
@@ -175,7 +187,9 @@ docs/historial/              documentación de versiones anteriores
 
 - El requisito del 60 % y el progreso se calculan en el navegador. Quien sepa manipularlo puede saltárselo: es una barrera pedagógica, no un control de examen. Para evaluar con garantías, usa Canvas.
 - El banco de ítems está codificado para que las respuestas no se lean a simple vista en GitHub, pero no está cifrado. La versión legible del banco no debe subirse al repositorio.
-- Las unidades cuasiexperimentales, ex post facto y observación y encuesta están en preparación. Las semanas 11-15 aún no tienen teoría asociada.
+- Las unidades de las semanas 11-13 son breves a propósito: el análisis se trabaja con JASP en clase.
+- Charo IA depende de un servicio externo (Gemini) y puede equivocarse. Los mensajes salen del navegador hacia el Worker y Google; el aviso pide no escribir datos personales.
+- El mapa de dominio es una orientación con pocas evidencias por concepto; no es una calificación.
 - El simulacro es material de preparación, no una muestra de las preguntas del examen.
 - Los dos simuladores factoriales trabajan con medias, sin error muestral: muestran el patrón, no si es significativo.
 

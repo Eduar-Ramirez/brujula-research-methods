@@ -12,15 +12,20 @@
   const caso = (id) => C().casos.find((c) => c.id === id);
   const est = (cid, pid) => (S().casos.estado[cid] && S().casos.estado[cid][pid]) || {};
   const resuelto = (cid, pid) => { const e = est(cid, pid); return !!(e.resuelto && !e.revelado); };
+  // estado del simulacro separado por parcial (el del Parcial 1 queda en S().parcial)
+  const PS = () => { const st = S(); if (P().nombre === "Parcial 1") return st.parcial; st.parciales = st.parciales || {}; return (st.parciales[P().nombre] = st.parciales[P().nombre] || { intentos: [], vistos: [] }); };
+  B.estadoParcial = PS;
 
   // ---------------- banco de ítems (codificado) ----------------
   let BANCO = null;
   function banco() {
     if (BANCO) return BANCO; const b = B._bancoCrudo; if (!b) return null;
-    const k = "brujula-mdi-parcial1", bin = atob(b.datos), u8 = new Uint8Array(bin.length);
+    const k = b.clave || "brujula-mdi-parcial1", bin = atob(b.datos), u8 = new Uint8Array(bin.length);
     for (let i = 0; i < bin.length; i++) u8[i] = bin.charCodeAt(i) ^ k.charCodeAt(i % k.length);
     BANCO = { temas: b.temas, unidad: b.unidad, items: JSON.parse(new TextDecoder().decode(u8)) }; return BANCO;
   }
+
+  B.bancoParcial = () => banco();
 
   // ---------------- requisito: la ruta de práctica ----------------
   B.estadoRuta = () => {
@@ -31,8 +36,8 @@
     const n = filas.reduce((a, f) => a + f.n, 0), ok = filas.reduce((a, f) => a + f.ok, 0), nj = filas.reduce((a, f) => a + f.nj, 0), okj = filas.reduce((a, f) => a + f.okj, 0);
     const g = n ? ok / n : 0, j = nj ? okj / nj : 1;
     const abierto = g >= P().umbral && j >= P().umbralJasp;
-    if (abierto && !S().parcial.desbloqueado) { S().parcial.desbloqueado = new Date().toISOString(); B.guardar(); }
-    return { filas, n, ok, nj, okj, g, j, abierto: abierto || !!S().parcial.desbloqueado };
+    if (abierto && !PS().desbloqueado) { PS().desbloqueado = new Date().toISOString(); B.guardar(); }
+    return { filas, n, ok, nj, okj, g, j, abierto: abierto || !!PS().desbloqueado };
   };
   const minutos = (f) => Math.round(f.n * 3 + (f.nj ? 15 : 0));
   const diasHasta = () => { const d = new Date(P().fecha) - new Date(); return Math.max(0, Math.ceil(d / 86400000)); };
@@ -48,7 +53,7 @@
     { id: "lector", ic: "📖", nom: "Lectura a fondo", txt: "Marca como leídas todas las secciones de una unidad.", ok: () => B.listaUnidades().some((u) => u.secciones.length && u.secciones.every((s) => S().leido[u.id + "/" + s.id])) },
     { id: "constancia", ic: "🔥", nom: "Constancia", txt: "Trabaja en Brújula tres días distintos.", ok: () => (S().dias || []).length >= 3 },
     { id: "ruta", ic: "🔓", nom: "Ruta superada", txt: "Alcanza el 60 % de la ruta y desbloquea el simulacro.", ok: () => B.estadoRuta().abierto },
-    { id: "simulacro", ic: "🏆", nom: "Listo/a para el parcial", txt: "Saca un 80 % o más en un simulacro.", ok: () => (S().parcial.intentos || []).some((x) => x.nota >= 0.8) }];
+    { id: "simulacro", ic: "🏆", nom: "Listo/a para el parcial", txt: "Saca un 80 % o más en un simulacro.", ok: () => (PS().intentos || []).some((x) => x.nota >= 0.8) }];
   B.insignias = () => INSIGNIAS.map((x) => ({ ...x, logro: !!x.ok() }));
   B.htmlInsignias = (peq) => `<div class="insignias ${peq ? "peq" : ""}">${B.insignias().map((x) => `<div class="insignia ${x.logro ? "logro" : ""}" title="${B.esc(x.txt)}"><span class="ic">${x.logro ? x.ic : "🔒"}</span><b>${x.nom}</b>${peq ? "" : `<small>${x.txt}</small>`}</div>`).join("")}</div>`;
 
@@ -71,10 +76,9 @@
   // ---------------- vista de la ruta ----------------
   B.vista("parcial", (main) => {
     const r = B.estadoRuta(), bk = banco();
-    const SEM = { c13: ["Semanas 1-2", "Método científico y tradiciones", "fund"], c14: ["Semana 3", "Análisis cualitativo", "cuali"], c01: ["Semana 4", "Grupos distintos", "t4"],
-      c05: ["Semana 5", "El mismo grupo", "t5"], c09: ["Semana 6", "Factoriales: leer la interacción", "t6"], c10: ["Semana 6", "Factorial mixto (experimento de clase)", "t6"], c15: ["Semana 7", "Caso único", "t7"] };
+    const SEM = P().etiquetas || {};
     main.innerHTML = `<section class="tarjeta cabecera-vista"><h1>🗺️ Ruta al ${P().nombre}</h1>
-        <p class="lead">Siete misiones, una por cada semana que entra en el examen (${new Date(P().fecha).toLocaleDateString("es-ES", { day: "numeric", month: "long", year: "numeric" })}). Cada misión es un caso completo: decides, analizas y redactas. Cuando resuelvas el <b>${pct(P().umbral)} %</b> de los problemas y el <b>${pct(P().umbralJasp)} %</b> de los análisis en JASP, se abrirá el <b>simulacro de 20 ítems</b>.</p>
+        <p class="lead">${r.filas.length} misiones sobre las semanas que entran en el examen (${P().semanas ? "semanas " + P().semanas + " · " : ""}${new Date(P().fecha).toLocaleDateString("es-ES", { day: "numeric", month: "long", year: "numeric" })}). Cada misión es un caso completo: decides, analizas y redactas. Cuando resuelvas el <b>${pct(P().umbral)} %</b> de los problemas y el <b>${pct(P().umbralJasp)} %</b> de los análisis en JASP, se abrirá el <b>simulacro de 20 ítems</b>.</p>
         <div class="requisitos"><div><b>${r.ok} de ${r.n}</b> problemas resueltos (${pct(r.g)} %)${barra(r.g, r.g >= P().umbral ? "alto" : "medio")}<small>meta: ${pct(P().umbral)} %</small></div>
           <div><b>${r.okj} de ${r.nj}</b> lecturas de JASP correctas (${pct(r.j)} %)${barra(r.j, r.j >= P().umbralJasp ? "alto" : "medio")}<small>meta: ${pct(P().umbralJasp)} %</small></div></div>
         <p class="nota">Un problema cuenta como resuelto si llegas a la respuesta correcta sin pulsar «Ver la respuesta razonada». Si la ves, ese paso no cuenta, pero puedes <b>reiniciar el caso</b> e intentarlo de nuevo.</p></section>
@@ -95,13 +99,13 @@
 
   // ---------------- simulacro ----------------
   function sortear() {
-    const bk = banco(), vistos = new Set(S().parcial.vistos || []), cuota = { ...P().temas }, dq = { ...P().reparto };
+    const bk = banco(), vistos = new Set(PS().vistos || []), cuota = { ...P().temas }, dq = { ...P().reparto };
     for (let intento = 0; intento < 400; intento++) {
       const c = { ...cuota }, d = { ...dq }, elegidos = [];
       let orden = B.barajar(bk.items);
       if (intento < 200) orden = orden.filter((x) => !vistos.has(x.id)).concat(orden.filter((x) => vistos.has(x.id)));  // primero los no vistos
       for (const it of orden) if (c[it.t] > 0 && d[it.d] > 0) { elegidos.push(it); c[it.t]--; d[it.d]--; }
-      if (elegidos.length === P().items) return B.barajar(elegidos).sort((a, b) => a.t.localeCompare(b.t));
+      if (elegidos.length === P().items) return B.barajar(elegidos).sort((a, b) => Number(a.t.slice(1)) - Number(b.t.slice(1)));
     }
     return B.barajar(bk.items).slice(0, P().items);
   }
@@ -117,16 +121,16 @@
         <a class="boton naranja" href="#parcial">Ir a la ruta</a></section>`; return;
     }
     if (SIM && !SIM.fin) return pintaItem(main);
-    const ult = (S().parcial.intentos || []).slice(-1)[0];
+    const ult = (PS().intentos || []).slice(-1)[0];
     main.innerHTML = `<section class="tarjeta"><h1>🏁 Simulacro del ${P().nombre}</h1>
-        <p class="lead">${P().items} ítems de opción múltiple basados en casos, sorteados de un banco de ${banco().items.length}: ${P().reparto[1]} fáciles, ${P().reparto[2]} de dificultad media y ${P().reparto[3]} difíciles, repartidos entre las siete semanas que entran en el examen.</p>
+        <p class="lead">${P().items} ítems de opción múltiple basados en casos, sorteados de un banco de ${banco().items.length}: ${P().reparto[1]} fáciles, ${P().reparto[2]} de dificultad media y ${P().reparto[3]} difíciles, repartidos entre las semanas que entran en el examen${P().semanas ? ` (${P().semanas})` : ""}.</p>
         <ul><li>No verás si aciertas hasta entregar: así se parece más al examen.</li><li>En cada ítem indica tu <b>seguridad</b>. Al final verás si tu confianza coincide con tus aciertos.</li><li>Cada simulacro da prioridad a ítems que aún no has visto.</li></ul>
         <label class="compromiso"><input type="checkbox" id="sim-comp"> Lo haré <b>sin apuntes ni IA</b>. Sé que el diagnóstico solo me sirve si refleja lo que sé hoy.</label>
         <div class="botonera"><button type="button" class="boton" id="sim-ir" disabled>Empezar el simulacro</button></div></section>
-      ${(S().parcial.intentos || []).length ? `<section class="tarjeta"><h3>Tus simulacros</h3>${B.tabla(["Fecha", "Nota", "Tema más flojo"], S().parcial.intentos.map((x) => [new Date(x.fecha).toLocaleString("es-ES"), `${x.aciertos}/${x.n} (${pct(x.nota)} %)`, x.peor || "—"]))}${ult ? `<p><button type="button" class="enlace" id="sim-ver">Ver el informe del último simulacro</button></p>` : ""}</section>` : ""}`;
+      ${(PS().intentos || []).length ? `<section class="tarjeta"><h3>Tus simulacros</h3>${B.tabla(["Fecha", "Nota", "Tema más flojo"], PS().intentos.map((x) => [new Date(x.fecha).toLocaleString("es-ES"), `${x.aciertos}/${x.n} (${pct(x.nota)} %)`, x.peor || "—"]))}${ult ? `<p><button type="button" class="enlace" id="sim-ver">Ver el informe del último simulacro</button></p>` : ""}</section>` : ""}`;
     B.$("#sim-comp").addEventListener("change", (e) => { B.$("#sim-ir").disabled = !e.target.checked; });
     B.$("#sim-ir").addEventListener("click", () => {
-      SIM = { items: sortear().map((it) => ({ ...it, orden: B.barajar([0, 1, 2, 3]) })), i: 0, resp: {}, seg: {}, t0: Date.now(), tiempos: {}, entrada: Date.now(), salidas: 0, fin: false };
+      SIM = { items: sortear().map((it) => ({ ...it, orden: B.barajar(it.o.map((_, k) => k)) })), i: 0, resp: {}, seg: {}, t0: Date.now(), tiempos: {}, entrada: Date.now(), salidas: 0, fin: false };
       pintaItem(main);
     });
     B.$("#sim-ver")?.addEventListener("click", () => { SIM = { ...ult.sim, fin: true }; pintaInforme(main, ult); });
@@ -138,7 +142,7 @@
     SIM.entrada = Date.now();
     main.innerHTML = `<section class="tarjeta simulacro"><div class="rep-cab"><span>Ítem ${SIM.i + 1} de ${n} · ${bk.temas[it.t]}</span><span>${Object.keys(SIM.resp).length} respondidos</span></div>
       <div class="puntos-sim">${SIM.items.map((x, k) => `<button type="button" data-ir-item="${k}" class="${k === SIM.i ? "actual" : ""} ${SIM.resp[x.id] !== undefined ? "resp" : ""}" aria-label="Ítem ${k + 1}">${k + 1}</button>`).join("")}</div>
-      <h3 class="pregunta">${it.s}</h3><div class="opciones">${it.orden.map((k, j) => `<label class="opcion"><input type="radio" name="sim-o" value="${k}" ${r === k ? "checked" : ""}><span><b>${"ABCD"[j]}.</b> ${it.o[k]}</span></label>`).join("")}</div>
+      <h3 class="pregunta">${it.s}</h3><div class="opciones">${it.orden.map((k, j) => `<label class="opcion"><input type="radio" name="sim-o" value="${k}" ${r === k ? "checked" : ""}><span><b>${"ABCDE"[j]}.</b> ${it.o[k]}</span></label>`).join("")}</div>
       <div class="seguridad"><span>¿Qué seguridad tienes?</span>${[["seguro", "😎 Seguro/a"], ["dudo", "🤔 Dudo"], ["azar", "🎲 Al azar"]].map(([k, t]) => `<button type="button" class="boton peq ${sg === k ? "" : "sec"}" data-seg="${k}">${t}</button>`).join("")}</div>
       <div class="botonera"><button type="button" class="boton gris" id="sim-ant" ${SIM.i ? "" : "disabled"}>← Anterior</button>${SIM.i < n - 1 ? `<button type="button" class="boton" id="sim-sig">Siguiente →</button>` : ""}<button type="button" class="boton ${SIM.i === n - 1 ? "exito" : "sec"}" id="sim-fin">Entregar</button></div></section>`;
     const marca = () => { SIM.tiempos[it.id] = (SIM.tiempos[it.id] || 0) + (Date.now() - SIM.entrada); };
@@ -166,7 +170,7 @@
     const reg = { fecha: new Date().toISOString(), n: its.length, aciertos, nota: aciertos / its.length, porTema, porDif, cal, peor: peor && peor.ok / peor.n < 1 ? bk.temas[peor.t] : null,
       tiempoMedio: Math.round(Object.values(SIM.tiempos).reduce((a, b) => a + b, 0) / its.length / 1000), salidas: SIM.salidas,
       sim: { items: its.map((x) => ({ id: x.id, orden: x.orden })), resp: SIM.resp, seg: SIM.seg } };
-    const s = S().parcial; s.intentos = (s.intentos || []).concat([reg]); s.vistos = [...new Set((s.vistos || []).concat(its.map((x) => x.id)))]; B.guardar();
+    const s = PS(); s.intentos = (s.intentos || []).concat([reg]); s.vistos = [...new Set((s.vistos || []).concat(its.map((x) => x.id)))]; B.guardar();
     pintaInforme(main, reg);
   }
 
@@ -204,9 +208,10 @@
         <li><b>Código</b> (HTML, CSS y JavaScript): licencia MIT (archivo LICENSE del repositorio).</li>
         <li><b>Logotipos de ESIC University</b>: marcas de su titular, excluidas de las licencias anteriores. No pueden reutilizarse sin su autorización.</li></ul>
       <p class="nota">Cita sugerida: Ramírez Riveros, E. (2026). <i>Brújula: laboratorio de métodos y diseños de investigación</i> [Recurso educativo abierto]. ESIC University.</p>
-      <h3>Fuentes</h3><ul><li>León, O. G. y Montero, I. (2020). <i>Métodos de investigación en psicología y educación: las tradiciones cuantitativa y cualitativa</i> (4.ª ed.). McGraw-Hill.</li>
-        <li>Diapositivas de la asignatura (temas 4 a 7) y guías interactivas previas del profesor (diseños, repaso, investigación cualitativa, banco de ítems).</li>
+      <h3>Fuentes</h3><ul><li>León, O. G. y Montero, I. (2015). <i>Métodos de investigación en psicología y educación: las tradiciones cuantitativa y cualitativa</i> (4.ª ed.). McGraw-Hill.</li>
+        <li>Diapositivas de la asignatura (temas 4 a 9) y guías interactivas previas del profesor (diseños, repaso, investigación cualitativa, banco de ítems).</li>
+        <li><b>Charo IA</b> es un homenaje a Rosario (Charo) Martínez Arias, catedrática de Metodología de las Ciencias del Comportamiento de la Universidad Complutense de Madrid y referente de la psicometría española. La tutora virtual no es ella ni habla en su nombre. La ilustración ha sido generada con IA.</li>
         <li>JASP Team. <i>JASP</i> [software libre]. <a href="https://jasp-stats.org/" target="_blank" rel="noopener">jasp-stats.org</a>.</li></ul>
-      <p>Todos los datos de los casos y de los simuladores son <b>simulados</b> con fines docentes. Las personas de los casos son ficticias.</p></section>`;
+      <p>Los datos de los casos y de los simuladores son <b>simulados</b> con fines docentes, salvo la misión 16 (actividad de clase del 5 de noviembre de 2026), que usa datos reales anonimizados: sin códigos personales ni otros datos identificativos. Las personas de los casos son ficticias.</p></section>`;
   });
 })(window.Brujula);
